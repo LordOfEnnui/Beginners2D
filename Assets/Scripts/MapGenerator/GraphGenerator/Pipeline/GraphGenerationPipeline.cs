@@ -17,5 +17,3 @@ public class GraphGenerationPipeline : Pipeline<GraphGenerationContext> {
         Debug.Log($"[Pipeline] Graph generation completed. Total nodes: {context.Graph.GetAllNodes().Count}");
     }
 }
-
-

@@ -13,12 +13,10 @@ MonoBehaviour:
   m_Name: MapGenerationData
   m_EditorClassIdentifier: Assembly-CSharp::MapGenerationData
   seed: simple_seed
-  levelCount: 7
-  initialNodesPerLevel: 4
-  minNodesPerLevel: 3
-  maxNodesPerLevel: 5
-  maxNodeDeviation: 1
+  levelCount: 8
+  initialNodesPerLevel: 6
+  minNodesPerLevel: 4
+  maxNodesPerLevel: 7
+  maxNodeDeviation: 3
   allowGradualIncrease: 1
   allowGradualDecrease: 1
-  randomConnectionChance: 0.3
-  destroyConnectionChance: 0.5

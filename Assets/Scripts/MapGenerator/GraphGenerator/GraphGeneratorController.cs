@@ -24,6 +24,8 @@ public class GraphGeneratorController : MonoBehaviour {
         var stages = graphPipelineConfig.stageConfigs;
 
         foreach (var stageConfig in stages) {
+            if (stageConfig == null) continue;
+
             var stageInstance = dataRuntimeFactory.CreateInstanse(stageConfig) as IPipelineStage<GraphGenerationContext>;
             pipeline.AddStage(stageInstance);
         }

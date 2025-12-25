@@ -11,7 +11,7 @@ public abstract class BaseStageConfig<TContext> : ScriptableObject, IRuntimeConf
 
     public abstract Type RuntimeType { get; }
 
-    protected void OnValidate() {
+    protected virtual void OnValidate() {
         if (string.IsNullOrEmpty(stageName)) {
             stageName = GetType().Name;
         }

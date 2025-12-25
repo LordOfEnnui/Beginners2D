@@ -23,17 +23,26 @@ public class GraphView : MonoBehaviour {
 
         for (int level = 0; level < levelNodes.Count; level++) {
             List<GraphNode> nodesAtLevel = levelNodes[level];
+            float xPos = level * nodesXOffset;
+
+
+            Transform levelParent = new GameObject().transform;
+            levelParent.SetParent(graphParent);
+            levelParent.gameObject.name = $"Level_{level}";
+            levelParent.transform.localPosition = new Vector3(xPos, 0f, 0f);
+
             for (int i = 0; i < nodesAtLevel.Count; i++) {
                 GraphNode graphNode = nodesAtLevel[i];
-                NodeView nodeView = Instantiate(noderViewPrefab, graphParent);
+
+                NodeView nodeView = Instantiate(noderViewPrefab, levelParent);
 
                 string nodeName = $"L{graphNode.level}-I{graphNode.index}";
                 nodeView.SetText(nodeName);
                 nodeView.gameObject.name = nodeName;
 
-                float xPos = level * nodesXOffset;
+               
                 float yPos = i * nodesYOffset - (nodesAtLevel.Count - 1) * nodesYOffset / 2f;
-                nodeView.transform.localPosition = new Vector3(xPos, yPos, 0f);
+                nodeView.transform.localPosition = new Vector3(0, yPos, 0f);
 
                 nodeViews.Add(graphNode, nodeView);
             }

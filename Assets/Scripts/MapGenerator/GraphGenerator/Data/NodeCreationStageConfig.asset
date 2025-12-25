@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ef2764f0e40f1a438a22aa5c89420c1, type: 3}
+  m_Script: {fileID: 11500000, guid: 9f8e1a97e76400348adf3b575d845ff8, type: 3}
   m_Name: NodeCreationStageConfig
   m_EditorClassIdentifier: Assembly-CSharp::NodeCreationStageConfig
-  stageName: Node Creation
-  minNodes: 10
-  maxNodes: 20
+  stageName: NodeCreationStageConfig

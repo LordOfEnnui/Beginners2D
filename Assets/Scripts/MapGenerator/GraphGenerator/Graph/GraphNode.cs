@@ -9,6 +9,8 @@ public class GraphNode {
     public int level;
     public int index;
 
+    public Vector2 Position => new Vector2(level, index);
+
     public GraphNode(int level, int index) {
         this.level = level;
         this.index = index;
