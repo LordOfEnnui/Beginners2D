@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{9a4d3f1c-f36d-4216-864f-8e0ad4b102e8}">
 		<property name="assetPath">
-			<value>Music/E O Pintinho Piu (Hoodtrap) - HoodTrapJerk &amp; TRPJRK - Trillex Music Group.mp3</value>
+			<value>Music/UI/E O Pintinho Piu (Hoodtrap) - HoodTrapJerk &amp; TRPJRK - Trillex Music Group.mp3</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

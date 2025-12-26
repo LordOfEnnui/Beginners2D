@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
+using FMOD.Studio;
 
 public class FmodAudioService : IAudioService {
     // Словник для маппінгу каналів на FMOD шини
@@ -15,9 +17,14 @@ public class FmodAudioService : IAudioService {
 
     public string SaveKey => "audio_settings";
 
-    public FmodAudioService() {
-        // Ініціалізація словника шин
+    private AudioStateConfig _config;
+
+    private EventInstance _currentMusic;
+    private EventReference _currentMusicRef;
+
+    public FmodAudioService(AudioStateConfig config) {
         InitDictionary();
+        _config = config;
     }
 
     private void InitDictionary() {
@@ -47,11 +54,42 @@ public class FmodAudioService : IAudioService {
     }
 
     public void PlaySound(string eventPath) {
-        FMODUnity.RuntimeManager.PlayOneShot(eventPath);
+        RuntimeManager.PlayOneShot(eventPath);
     }
 
     public List<AudioChannelType> GetSupportedChannelsTypes() {
         return new List<AudioChannelType>(buses.Keys);
+    }
+
+    public void StopCurrentMusic() {
+        _currentMusic.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        _currentMusic.release();
+    }
+
+    public void StartMusicPlaylist(MusicPlaylist playlist) {
+        var eventRef = _config.GetMusicEvent(playlist);
+        if (!eventRef.IsNull) {
+            PlayMusic(eventRef);
+        }
+    }
+
+    public void PlayMusic(FMODUnity.EventReference musicEvent) {
+        if (IsSameEvent(musicEvent, _currentMusicRef)) {
+            return;
+        }
+
+        if (_currentMusic.isValid()) {
+            StopCurrentMusic();
+        }
+
+        _currentMusicRef = musicEvent;
+
+        _currentMusic = FMODUnity.RuntimeManager.CreateInstance(musicEvent);
+        _currentMusic.start();
+    }
+
+    private bool IsSameEvent(FMODUnity.EventReference a, FMODUnity.EventReference b) {
+        return a.Guid == b.Guid && a.Guid != default;
     }
 }
 

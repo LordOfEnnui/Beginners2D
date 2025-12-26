@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class UIPanel : MonoBehaviour {
     [SerializeField] protected CanvasGroup canvasGroup;
@@ -14,13 +15,20 @@ public class UIPanel : MonoBehaviour {
     private Tween _currentTween;
 
     [SerializeField] bool startVisible = false;
-
+    [SerializeField] private Button closeButton;
+   
     protected virtual void Awake() {
         if (canvasGroup == null) {
             canvasGroup = GetComponentInChildren<CanvasGroup>();
         }
 
         SetImmediateState(startVisible);
+        if (closeButton != null)
+        closeButton.onClick.AddListener(OnCloseButtonClicked);
+    }
+
+    private void OnCloseButtonClicked() {
+        Hide();
     }
 
     public virtual void Show() {
@@ -91,5 +99,8 @@ public class UIPanel : MonoBehaviour {
 
     protected virtual void OnDestroy() {
         _currentTween?.Kill();
+
+        if (closeButton != null)
+            closeButton.onClick.RemoveListener(OnCloseButtonClicked);
     }
 }

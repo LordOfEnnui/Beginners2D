@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: FMOD/beginners/Build/Desktop/Music.bank
   Name: Build/Desktop/Music
   StudioPath: bank:/Music
-  lastModified: 639023542192811855
+  lastModified: 639023668618076378
   FileSizes: []
   Exists: 1
 --- !u!114 &-8369749414957714374
@@ -67,7 +67,7 @@ MonoBehaviour:
   - {fileID: -8828683553586594645}
   IsStream: 1
   Is3D: 0
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
@@ -110,13 +110,13 @@ MonoBehaviour:
     Data4: -257402130
   Banks:
   - {fileID: -8828683553586594645}
-  IsStream: 0
+  IsStream: 1
   Is3D: 0
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 148401
 --- !u!114 &-259455858767486625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,7 +163,7 @@ MonoBehaviour:
   - {fileID: -259455858767486625}
   StringsBanks:
   - {fileID: 5070411135214287053}
-  cacheTime: 639023542192811855
+  cacheTime: 639023668618076378
   cacheVersion: 131634
 --- !u!114 &3731925180803999095
 MonoBehaviour:
@@ -225,7 +225,7 @@ MonoBehaviour:
   - {fileID: -8828683553586594645}
   IsStream: 0
   Is3D: 0
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters: []
   MinDistance: 1
   MaxDistance: 20

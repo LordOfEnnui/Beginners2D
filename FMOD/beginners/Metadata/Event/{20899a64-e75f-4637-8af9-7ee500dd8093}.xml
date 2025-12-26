@@ -70,6 +70,9 @@
 		<relationship name="modules">
 			<destination>{68f595a2-3606-48c5-8741-66030bef414b}</destination>
 		</relationship>
+		<relationship name="markers">
+			<destination>{187e38b4-b245-4ac2-b20d-d869b7d1267d}</destination>
+		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{f320fdcc-71cf-43e8-b1bb-7ec9e499d5e6}">
 		<relationship name="effectChain">
@@ -100,7 +103,7 @@
 		</property>
 		<relationship name="sounds">
 			<destination>{829edf98-f33c-4626-8d9a-ee7ab48af325}</destination>
-			<destination>{d43efb63-b24b-4618-9486-58f9cf2af4d6}</destination>
+			<destination>{0f6e9735-31b7-4ca1-9406-9cd0a221013f}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{8d901162-7a83-40d5-b9d5-f185cfd07f0b}">
@@ -117,6 +120,20 @@
 			<destination>{f320fdcc-71cf-43e8-b1bb-7ec9e499d5e6}</destination>
 		</relationship>
 	</object>
+	<object class="LoopRegion" id="{187e38b4-b245-4ac2-b20d-d869b7d1267d}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="length">
+			<value>134.45224489795919</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{b08d6559-92a7-44a9-9b80-b70ceee6fd47}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{8a9ffdda-e12c-4281-98f1-b2dc89c5b01e}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusEffectChain" id="{48764a45-9d39-4428-aea0-a322e9cc814a}">
 		<relationship name="effects">
 			<destination>{e6eeb234-0ef9-4c09-ba00-e3cb4f607427}</destination>
@@ -129,9 +146,9 @@
 			<destination>{9a4d3f1c-f36d-4216-864f-8e0ad4b102e8}</destination>
 		</relationship>
 	</object>
-	<object class="SingleSound" id="{d43efb63-b24b-4618-9486-58f9cf2af4d6}">
+	<object class="SingleSound" id="{0f6e9735-31b7-4ca1-9406-9cd0a221013f}">
 		<relationship name="audioFile">
-			<destination>{52b2819f-b59c-4c8a-a65e-439a05466fc5}</destination>
+			<destination>{01a79c5d-1ff9-41ca-9e2a-2696a9a4d2c1}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{f336e987-2261-4b2e-89f7-03260eb99212}">

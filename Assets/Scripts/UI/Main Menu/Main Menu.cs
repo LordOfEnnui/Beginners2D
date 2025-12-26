@@ -4,6 +4,8 @@ using Zenject;
 
 public class MainMenuController : MonoBehaviour {
     [Inject] IGameManager gameManager;
+    [Inject] IUiService _uiService;
+
     [SerializeField] Button startGameButton;
     [SerializeField] Button settingsButton;
     [SerializeField] Button exitButton;
@@ -17,7 +19,7 @@ public class MainMenuController : MonoBehaviour {
     }
 
     public void ToggleSettings() {
-        gameManager.TogglePause();
+        _uiService.TogglePanel(_uiService.SettingsMenu);
     }
 
     public void ExitGame() {

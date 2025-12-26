@@ -3,18 +3,22 @@ using UnityEngine;
 using Zenject;
 
 public class UIManager : MonoBehaviour, IUiService {
-    [SerializeField] PauseMenuUI pauseUI;
+
+    [SerializeField] UIPanel pauseUI;
+
+    [SerializeField] SettingsMenuUI settingsPanel;
     [SerializeField] LoadingScreenUI loading;
+
     public LoadingScreenUI LoadingUI => loading;
+    public SettingsMenuUI SettingsMenu => settingsPanel;
+    public UIPanel PauseUI => pauseUI;
 
-    public PauseMenuUI PauseUI => pauseUI;
-
-    public void HidePanel(UIPanel pauseUI) {
-        pauseUI.Hide();
+    public void HidePanel(UIPanel panel) {
+        panel.Hide();
     }
 
-    public void ShowPanel(UIPanel pauseUI) {
-        pauseUI.Show();
+    public void ShowPanel(UIPanel panel) {
+        panel.Show();
     }
 
     public void TogglePanel(UIPanel panel) {
