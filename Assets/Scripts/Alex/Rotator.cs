@@ -1,22 +1,65 @@
 using UnityEngine;
 using DG.Tweening;
 
-public class Rotator : MonoBehaviour {
-    [SerializeField] private float rotationDuration = 5f;
-    [SerializeField] private RotateMode rotateMode = RotateMode.FastBeyond360;
+using DG.Tweening;
+using UnityEngine;
 
-    private RectTransform rectTransform;
+public class SphereCameraRotator : MonoBehaviour {
+    [Header("Основні налаштування")]
+    [SerializeField] private float baseRotationDuration = 30f;
+    [SerializeField] private bool randomizeAxes = true;
+    [SerializeField] private bool useWorldSpace = false;
+
+    [Header("Додаткові параметри")]
+    [SerializeField] private float minAxisWeight = 0.3f;
+    [SerializeField] private float maxAxisWeight = 1f;
+    [SerializeField] private bool differentSpeedsPerAxis = false;
+    [SerializeField] private Vector3 axisSpeeds = new Vector3(1f, 1.5f, 0.7f);
 
     void Start() {
-        rectTransform = GetComponent<RectTransform>();
+        InitializeRotation();
+    }
+    void InitializeRotation() {
+        Vector3 rotationVector;
 
-        // Безперервне обертання
-        rectTransform.DORotate(new Vector3(0, 0, 360), rotationDuration, rotateMode)
-            .SetLoops(-1, LoopType.Restart) 
-            .SetEase(Ease.Linear); 
+        if (randomizeAxes) {
+            if (differentSpeedsPerAxis) {
+                rotationVector = new Vector3(
+                    Random.Range(minAxisWeight, maxAxisWeight) * axisSpeeds.x,
+                    Random.Range(minAxisWeight, maxAxisWeight) * axisSpeeds.y,
+                    Random.Range(minAxisWeight, maxAxisWeight) * axisSpeeds.z
+                ) * 360f;
+            } else {
+                rotationVector = Random.onUnitSphere * 360f;
+
+                rotationVector.x = Mathf.Sign(rotationVector.x) * Mathf.Max(Mathf.Abs(rotationVector.x), minAxisWeight * 360f);
+                rotationVector.y = Mathf.Sign(rotationVector.y) * Mathf.Max(Mathf.Abs(rotationVector.y), minAxisWeight * 360f);
+                rotationVector.z = Mathf.Sign(rotationVector.z) * Mathf.Max(Mathf.Abs(rotationVector.z), minAxisWeight * 360f);
+            }
+        } else {
+            rotationVector = new Vector3(1f, 1.5f, 0.7f).normalized * 360f;
+        }
+
+        var tween = transform.DORotate(rotationVector, baseRotationDuration,
+            useWorldSpace ? RotateMode.WorldAxisAdd : RotateMode.LocalAxisAdd)
+            .SetLoops(-1, LoopType.Incremental)
+            .SetEase(Ease.Linear)
+            .SetUpdate(UpdateType.Late); 
+
+        tween.id = "CameraRotation";
     }
 
     void OnDestroy() {
-        rectTransform.DOKill();
+        DOTween.Kill(transform);
+    }
+    public void ChangeRotationSpeed(float speedMultiplier) {
+        transform.DOKill(false);
+        baseRotationDuration /= speedMultiplier;
+        InitializeRotation();
+    }
+
+    public void RestartWithNewRotation() {
+        transform.DOKill(false);
+        InitializeRotation();
     }
 }

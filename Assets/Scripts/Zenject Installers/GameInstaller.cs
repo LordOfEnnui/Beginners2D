@@ -7,7 +7,8 @@ public class GameInstaller : MonoInstaller {
     [SerializeField] private SceneData _sceneData;
     [SerializeField] private UIManager _uiManager;
     [SerializeField] private GameController gameController;
-    
+
+    [SerializeField] AudioStateConfig _audioConfig;
     public override void InstallBindings() {
         Container.Bind<GameBootstrapper>()
         .FromComponentInNewPrefab(_gameBootstrapper)
@@ -32,7 +33,7 @@ public class GameInstaller : MonoInstaller {
         Container.Bind<InputManager>().AsSingle().NonLazy();
 
         //Services
-        Container.Bind<IAudioService>().To<FmodAudioService>().AsSingle();
+        Container.Bind<IAudioService>().To<FmodAudioService>().AsSingle().WithArguments(_audioConfig);
         Container.Bind<IRandomService>().To<RandomService>().AsSingle().WithArguments(_randomServiceSettings);
 
         Container.Bind<ILevelProgressService>().To<LevelProgressService>().AsSingle();
