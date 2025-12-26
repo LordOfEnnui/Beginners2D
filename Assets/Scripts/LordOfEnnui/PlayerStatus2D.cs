@@ -7,8 +7,7 @@ public class PlayerStatus2D : MonoBehaviour
     [SerializeField]
     int maxHealth = 5, currentHealth = 4;
     [SerializeField]
-    float contactForce = 10;
-
+    float contactKnockbackForce = 10;
 
     [SerializeField]
     Rigidbody2D rb;
@@ -23,19 +22,13 @@ public class PlayerStatus2D : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void HandleDashInvincibility() {
-        StartCoroutine(Invincibility((int) sprintIframes, new[] { "EnemyAbility" }));
+        StartCoroutine(Invincibility((int) sprintIframes, new[] { Layers.EnemyAbility }));
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.CompareTag("Enemy")) {
-            rb.AddForce(collision.GetContact(0).normal * contactForce, ForceMode2D.Impulse);
+        if (collision.gameObject.layer == Layers.Enemy || collision.gameObject.layer == Layers.EnemyAbility) {
+            rb.AddForce(collision.GetContact(0).normal * contactKnockbackForce, ForceMode2D.Impulse);
             currentHealth = currentHealth > maxHealth ? maxHealth : currentHealth;
             currentHealth--;
             if (currentHealth <= 0) {
@@ -43,28 +36,32 @@ public class PlayerStatus2D : MonoBehaviour
                 gameObject.SetActive(false);
                 return;
             }
-            StartCoroutine(Invincibility((int) damageIframes, new[] { "Enemy", "EnemyAbility" }));
+            StartCoroutine(Invincibility((int) damageIframes, new[] { Layers.Enemy, Layers.EnemyAbility }));
         }
     }
 
-    private IEnumerator Invincibility(int frames, string[] ignoreLayers, bool flash = true) {
-        foreach (string layer in ignoreLayers) {
-            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer(layer), true);
+    private IEnumerator Invincibility(int frames, int[] ignoreLayers, bool flash = true) {
+        foreach (int layer in ignoreLayers) {
+            Physics2D.IgnoreLayerCollision(Layers.Player, layer, true);
         }
 
         float iTime = frames / 60f;
-        int flashes = (int) (iTime * flashesPerSecond);
-        float timePerFlash = iTime / (flashes * 2);
+        if (flash) {
+            int flashes = (int) (iTime * flashesPerSecond);
+            WaitForSeconds timePerFlash = new WaitForSeconds(iTime / (flashes * 2));
 
-        for (int i = 0; i < flashes; i++) {
-            spriteRenderer.color = new Color(1, 1, 1, 0.5f);
-            yield return new WaitForSeconds(timePerFlash);
-            spriteRenderer.color = Color.white;
-            yield return new WaitForSeconds(timePerFlash);
+            for (int i = 0; i < flashes; i++) {
+                spriteRenderer.color = new Color(1, 1, 1, 0.5f);
+                yield return timePerFlash;
+                spriteRenderer.color = Color.white;
+                yield return timePerFlash;
+            }
+        } else {
+            yield return new WaitForSeconds(iTime);
         }
 
-        foreach (string layer in ignoreLayers) {
-            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer(layer), false);
+        foreach (int layer in ignoreLayers) {
+            Physics2D.IgnoreLayerCollision(Layers.Player, layer, false);
         }
     }
 }
