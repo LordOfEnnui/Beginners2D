@@ -82,3 +82,4 @@ MonoBehaviour:
       sceneAsset: {fileID: 102900000, guid: 978ccb3c3f925f34382ba0e9f3538503, type: 3}
       scenePath: Assets/Scenes/Alex/Main Menu Test (Alex)).unity
   _uiManager: {fileID: 2689825059751701066, guid: 495c270d0171ddf438db734788f88f91, type: 3}
+  _audioConfig: {fileID: 11400000, guid: a9522949ec7849748bff26396dbb94fc, type: 2}

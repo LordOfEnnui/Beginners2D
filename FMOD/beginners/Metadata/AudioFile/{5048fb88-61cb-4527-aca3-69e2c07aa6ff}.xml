@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{5048fb88-61cb-4527-aca3-69e2c07aa6ff}">
+		<property name="assetPath">
+			<value>SFX/UI/Clicks/SFX_UI_Click_Designed_Scifi_Digital_Generic_1.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.17643990929705217</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{cce36ccf-b47b-47ed-9814-9be00f00f060}</destination>
+		</relationship>
+	</object>
+</objects>
