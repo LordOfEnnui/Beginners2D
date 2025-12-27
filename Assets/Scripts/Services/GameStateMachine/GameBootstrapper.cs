@@ -9,6 +9,7 @@ public class GameBootstrapper : MonoBehaviour {
     }
 
     private void OnApplicationQuit() {
+        if (stateMachine != null)
         stateMachine.ChangeState<ExitState>();
     }
 }

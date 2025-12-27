@@ -8,7 +8,7 @@ public abstract class State : IState {
     public abstract void Enter();
     public abstract void Exit();
 
-    public virtual void Dispose() {
-        // Базова реалізація (може бути порожньою)
-    }
+    public virtual void Update() { }
+
+    public virtual void Dispose() { }
 }

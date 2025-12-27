@@ -35,4 +35,8 @@ public class StateMachine : IStateMachine {
 
         //Debug.Log("Entering Bootstrap State");
     }
+
+    public void UpdateState() {
+        _currentState?.Update();
+    }
 }

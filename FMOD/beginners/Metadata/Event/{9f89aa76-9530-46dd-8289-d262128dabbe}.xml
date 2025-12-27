@@ -5,7 +5,7 @@
 			<value>Blazing Fire</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{e07f2548-8932-46c4-8eee-8b6319e3f422}</destination>
@@ -168,6 +168,7 @@
 	<object class="MixerBusEffectChain" id="{87656fe7-5de7-46fd-8977-cc3be15e17b6}">
 		<relationship name="effects">
 			<destination>{0d6224f8-03c6-4411-9295-a1ef379ee2ef}</destination>
+			<destination>{5012d7ce-a5bd-4ce4-92d3-626662b49c80}</destination>
 			<destination>{55d22403-25d2-4541-b7b0-c37e538cd5f5}</destination>
 		</relationship>
 	</object>
@@ -191,6 +192,7 @@
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{0d6224f8-03c6-4411-9295-a1ef379ee2ef}" />
+	<object class="SpatialiserEffect" id="{5012d7ce-a5bd-4ce4-92d3-626662b49c80}" />
 	<object class="PitchShifterEffect" id="{55d22403-25d2-4541-b7b0-c37e538cd5f5}">
 		<property name="pitch">
 			<value>0.799999952</value>

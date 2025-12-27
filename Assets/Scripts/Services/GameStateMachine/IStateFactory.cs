@@ -1,7 +1,7 @@
 using Zenject;
 
 public interface IStateFactory {
-    T CreateState<T>() where T : IState;
+    IState CreateState<T>() where T : class, IState;
 }
 
 public class StateFactory : IStateFactory {
@@ -11,7 +11,7 @@ public class StateFactory : IStateFactory {
         _container = container;
     }
 
-    public T CreateState<T>() where T : IState {
+    IState IStateFactory.CreateState<T>() {
         return _container.Resolve<T>();
     }
 }
