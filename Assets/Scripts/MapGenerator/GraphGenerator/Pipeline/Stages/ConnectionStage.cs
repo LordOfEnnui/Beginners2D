@@ -133,7 +133,7 @@ public class ConnectionStage : IPipelineStage<GraphGenerationContext> {
                     GraphNode closest = FindClosestNode(node, levelNodes[level - 1]);
                     if (closest != null) {
                         closest.ConnectTo(node);
-                        Debug.LogWarning($"Fixed isolated node at level {level} (no backward connections)");
+                        //Debug.LogWarning($"Fixed isolated node at level {level} (no backward connections)");
                     }
                 }
             }
