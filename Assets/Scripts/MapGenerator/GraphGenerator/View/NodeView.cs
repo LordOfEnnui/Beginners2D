@@ -1,13 +1,16 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class NodeView : MonoBehaviour {
+public class NodeView : MonoBehaviour, IPointerDownHandler {
     [SerializeField] TextMeshPro text;
 
     [Header("Line settings")]
     [SerializeField] Material lineMaterial;
     [SerializeField] float lineWidth = 0.05f;
+
+    public Action<NodeView> OnNodeClicked;
 
     public void SetText(string text) {
         if (this.text != null)
@@ -27,6 +30,10 @@ public class NodeView : MonoBehaviour {
 
         lr.SetPosition(0, transform.position);
         lr.SetPosition(1, targetPosition);
+    }
+
+    public void OnPointerDown(PointerEventData eventData) {
+        Debug.Log("Clicked!");
     }
 }
 
