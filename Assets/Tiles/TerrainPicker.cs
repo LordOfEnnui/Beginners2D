@@ -11,6 +11,9 @@ public class TerrainPicker : MonoBehaviour
     private int _obstacleDensity=5; //Set from 1-20: % of tiles to be covered by obstacles.
 
     [SerializeField]
+    private int _borderSize=5;
+
+    [SerializeField]
     private obstaclePlacer _obstaclePlacer;
     
     [SerializeField]
@@ -110,7 +113,7 @@ public class TerrainPicker : MonoBehaviour
         setTiles();
     }
 
-    private void setTiles(){
+    private void setTiles(string selectedTerrain="random"){
         BoundsInt bounds = _tilemap.cellBounds;
         int width = bounds.size.x;
         int height = bounds.size.y;
@@ -118,9 +121,75 @@ public class TerrainPicker : MonoBehaviour
         int lowY = bounds.yMin;
         int hiX = bounds.xMax;
         int hiY = bounds.yMax;
+        
+
+
+        switch(selectedTerrain) 
+        {
+            case "crater":
+            _opt1 = _crater1;
+            _opt2 = _crater2;
+            _opt3 = _crater3;
+            _opt4 = _crater4;
+            _terrainLabel = "crater";
+            return;
+        case "sand":
+            _opt1 = _sand1;
+            _opt2 = _sand2;
+            _opt3 = _sand3;
+            _opt4 = _sand4;
+            _terrainLabel = "sand";
+            return;
+        case "rock":
+            _opt1 = _rocks1;
+            _opt2 = _rocks2;
+            _opt3 = _rocks3;
+            _opt4 = _rocks4;
+            _terrainLabel = "rock";
+            return;
+        case "lava":
+            _opt1 = _lava1;
+            _opt2 = _lava2;
+            _opt3 = _lava3;
+            _opt4 = _lava4;
+            _terrainLabel = "lava";
+            return;
+        case "cave":
+            _opt1 = _cave1;
+            _opt2 = _cave2;
+            _opt3 = _cave3;
+            _opt4 = _cave4;
+            _terrainLabel = "cave";
+            return;
+        case "ice":
+            _opt1 = _ice1;
+            _opt2 = _ice2;
+            _opt3 = _ice3;
+            _opt4 = _ice4;
+            _terrainLabel = "ice";
+            return;
+        case "snow":
+            _opt1 = _snow1;
+            _opt2 = _snow2;
+            _opt3 = _snow3;
+            _opt4 = _snow4;
+            _terrainLabel = "snow";
+            return;
+        case "water":
+            _opt1 = _water1;
+            _opt2 = _water2;
+            _opt3 = _water3;
+            _opt4 = _water4;
+            _terrainLabel = "water";
+            return;
+        default:
+            pickRandomTerrain();
+            return;
+
+        }
 
         // TerrainBase = pickRandomTerrain();
-        pickRandomTerrain();
+        // pickRandomTerrain();
 
         for(int i=lowX; i<hiX+1;i++){
             for(int j=lowY; j<hiY+1;j++){
