@@ -11,7 +11,10 @@ public class TerrainPicker : MonoBehaviour
     private int _obstacleDensity=5; //Set from 1-20: % of tiles to be covered by obstacles.
 
     [SerializeField]
-    private int _borderSize=5;
+    private int _borderSizeX=15;
+
+    [SerializeField]
+    private int _borderSizeY=5;
 
     [SerializeField]
     private obstaclePlacer _obstaclePlacer;
@@ -115,12 +118,16 @@ public class TerrainPicker : MonoBehaviour
 
     private void setTiles(string selectedTerrain="random"){
         BoundsInt bounds = _tilemap.cellBounds;
+        Debug.Log("Size:");
         int width = bounds.size.x;
+        Debug.Log("width:"+width);
         int height = bounds.size.y;
+        Debug.Log("height:"+height);
         int lowX = bounds.xMin;
         int lowY = bounds.yMin;
         int hiX = bounds.xMax;
         int hiY = bounds.yMax;
+        Debug.Log("bounds:"+hiX+"-"+lowX+","+hiY+"-"+lowY);
         
 
 
@@ -132,60 +139,59 @@ public class TerrainPicker : MonoBehaviour
             _opt3 = _crater3;
             _opt4 = _crater4;
             _terrainLabel = "crater";
-            return;
+            break;
         case "sand":
             _opt1 = _sand1;
             _opt2 = _sand2;
             _opt3 = _sand3;
             _opt4 = _sand4;
             _terrainLabel = "sand";
-            return;
+            break;
         case "rock":
             _opt1 = _rocks1;
             _opt2 = _rocks2;
             _opt3 = _rocks3;
             _opt4 = _rocks4;
             _terrainLabel = "rock";
-            return;
+            break;
         case "lava":
             _opt1 = _lava1;
             _opt2 = _lava2;
             _opt3 = _lava3;
             _opt4 = _lava4;
             _terrainLabel = "lava";
-            return;
+            break;
         case "cave":
             _opt1 = _cave1;
             _opt2 = _cave2;
             _opt3 = _cave3;
             _opt4 = _cave4;
             _terrainLabel = "cave";
-            return;
+            break;
         case "ice":
             _opt1 = _ice1;
             _opt2 = _ice2;
             _opt3 = _ice3;
             _opt4 = _ice4;
             _terrainLabel = "ice";
-            return;
+            break;
         case "snow":
             _opt1 = _snow1;
             _opt2 = _snow2;
             _opt3 = _snow3;
             _opt4 = _snow4;
             _terrainLabel = "snow";
-            return;
+            break;
         case "water":
             _opt1 = _water1;
             _opt2 = _water2;
             _opt3 = _water3;
             _opt4 = _water4;
             _terrainLabel = "water";
-            return;
+            break;
         default:
             pickRandomTerrain();
-            return;
-
+            break;
         }
 
         // TerrainBase = pickRandomTerrain();
@@ -215,9 +221,12 @@ public class TerrainPicker : MonoBehaviour
                 setTileColor(i,j,TerrainOption);
             }
         }
+
+        Debug.Log("Making obstacles");
         _obstaclePlacer.MakeObstacles(_terrainLabel,_obstacleDensity);//set input to % of tiles having obstacles, 1-20
         
-        _enemyPlacer.MakeEnemies(_spawnRate);//set input to spawn rate (avg # of enemies to spawn in a 20x20 grid)
+        Debug.Log("Making Enemies");
+        _enemyPlacer.MakeEnemies(_spawnRate,_borderSizeX,_borderSizeY);//set input to spawn rate (avg # of enemies to spawn in a 20x20 grid)
     }
 
     private void pickRandomTerrain(){
