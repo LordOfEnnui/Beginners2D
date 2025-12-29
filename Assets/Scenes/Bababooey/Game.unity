@@ -953,14 +953,14 @@ MonoBehaviour:
   _obstacle: {fileID: 9066407159989406065, guid: 04bdb808d1a7a8a45aed597edb8ebfac, type: 3}
   _tilegrid: {fileID: 893356816}
   _tilemap: {fileID: 2135189493}
-  _caveObstacle: {fileID: 3994558184578607846, guid: e376c8d27fac52f44a5dc216389197e5, type: 3}
-  _rockObstacle: {fileID: 6804970109233446114, guid: 81d5c79319525004da1e88a972dcbd32, type: 3}
-  _craterObstacle: {fileID: 983371429203059242, guid: 08a7e0fa32cfb594aa624568f8b6f8c2, type: 3}
+  _caveObstacle: {fileID: 4959135976207556042, guid: a1465213e24c31e4c84204d009b3ee1e, type: 3}
+  _rockObstacle: {fileID: -7680507887119096547, guid: 2a1d517399bc31a41b625e7766735dfe, type: 3}
+  _craterObstacle: {fileID: -2479578034869915356, guid: 18cb1612b9e61b741800a2c468106f82, type: 3}
   _iceObstacle: {fileID: -3637758324445931876, guid: 7e1b53301806ffa46985b8bd53d8931c, type: 3}
-  _snowObstacle: {fileID: -3891187355723801943, guid: 0eef59ac86837514aa5da838b29b13c1, type: 3}
+  _snowObstacle: {fileID: -8879959272999014611, guid: 59a54d6997379c64cbbe2760f66c4cc0, type: 3}
   _sandObstacle: {fileID: -1753350664435698906, guid: 325635669e8ce93499a83c1611044904, type: 3}
-  _waterObstacle: {fileID: -6073993665412291035, guid: f64727a69d1661847816adb406ff4df8, type: 3}
-  _lavaObstacle: {fileID: -6327690508360639328, guid: 637ebba0c4fad6c478cb989e4d543ae9, type: 3}
+  _waterObstacle: {fileID: 4960739934939833080, guid: 867fe5e97e237c44b8bdd28163d939e5, type: 3}
+  _lavaObstacle: {fileID: -2451413198602211631, guid: 666aa85795cdb7b48b25cbaa225f9627, type: 3}
 --- !u!1 &1775912552
 GameObject:
   m_ObjectHideFlags: 0
