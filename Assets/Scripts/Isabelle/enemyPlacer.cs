@@ -28,14 +28,14 @@ public class enemyPlacer : MonoBehaviour
     }
 
 
-    public void MakeEnemies(int spawnRate){
+    public void MakeEnemies(int spawnRate, int _borderSizeX, int _borderSizeY){
         BoundsInt bounds = _tilemap.cellBounds;
         int width = bounds.size.x;
         int height = bounds.size.y;
-        int lowX = bounds.xMin;
-        int lowY = bounds.yMin;
-        int hiX = bounds.xMax;
-        int hiY = bounds.yMax;
+        int lowX = bounds.xMin+_borderSizeX;
+        int lowY = bounds.yMin+_borderSizeY;
+        int hiX = bounds.xMax-_borderSizeX;
+        int hiY = bounds.yMax-_borderSizeY;
 
         for(int i=lowX; i<hiX+1;i++){
             for(int j=lowY; j<hiY+1;j++){

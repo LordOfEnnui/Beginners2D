@@ -145,7 +145,7 @@ Transform:
   m_GameObject: {fileID: 96318229}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.28, y: -25, z: 0}
+  m_LocalPosition: {x: 3.28, y: -19, z: 0}
   m_LocalScale: {x: 100, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -223,7 +223,7 @@ Transform:
   m_GameObject: {fileID: 117485214}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -41, y: 3, z: 0}
+  m_LocalPosition: {x: -30, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 60, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -456,11 +456,11 @@ Transform:
   m_GameObject: {fileID: 1102716136}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -3.3333335}
-  m_LocalScale: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1191281829}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1102716140
 MonoBehaviour:
@@ -518,7 +518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89b81a220a246c44198edccd94f938b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraFollow2D
-  target: {fileID: 0}
+  target: {fileID: 1191281829}
   smoothSpeed: 10
   offset: {x: 0, y: 0, z: 0}
 --- !u!1 &1191281824 stripped
@@ -647,11 +647,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3947410073007263139, guid: fcf5d37842bafc04982d9c725d052b4e, type: 3}
       propertyPath: maxHealth
-      value: 500
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 3947410073007263139, guid: fcf5d37842bafc04982d9c725d052b4e, type: 3}
       propertyPath: currentHealth
-      value: 500
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 6584275435257596009, guid: fcf5d37842bafc04982d9c725d052b4e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -699,10 +699,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 6584275435257596009, guid: fcf5d37842bafc04982d9c725d052b4e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1102716139}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fcf5d37842bafc04982d9c725d052b4e, type: 3}
 --- !u!1 &1549001032
@@ -731,7 +728,7 @@ Transform:
   m_GameObject: {fileID: 1549001032}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.28, y: 31, z: 0}
+  m_LocalPosition: {x: 3.28, y: 26, z: 0}
   m_LocalScale: {x: 100, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1081,7 +1078,7 @@ Transform:
   m_GameObject: {fileID: 1941271262}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 49, y: 3, z: 0}
+  m_LocalPosition: {x: 38, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 60, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -52395,8 +52392,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30524269eb9a2ed40be434689977d5b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TerrainPicker
-  _spawnRate: 3
-  _obstacleDensity: 5
+  _spawnRate: 2
+  _obstacleDensity: 3
+  _borderSizeX: 10
+  _borderSizeY: 5
   _obstaclePlacer: {fileID: 1640814981}
   _enemyPlacer: {fileID: 2070903950}
   _tilemap: {fileID: 2135189493}
@@ -52447,4 +52446,5 @@ SceneRoots:
   - {fileID: 1640814980}
   - {fileID: 2070903949}
   - {fileID: 1556957844}
+  - {fileID: 1102716139}
   - {fileID: 1016349019}
