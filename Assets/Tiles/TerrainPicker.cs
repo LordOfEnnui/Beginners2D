@@ -30,6 +30,9 @@ public class TerrainPicker : MonoBehaviour
     private modulePlacer _modulePlacer;
 
     [SerializeField]
+    private GameObject _background;
+
+    [SerializeField]
     private Tilemap _tilemap;
 
     [SerializeField]
@@ -39,13 +42,13 @@ public class TerrainPicker : MonoBehaviour
     private TileBase _tilebase;
 
     [SerializeField]
-    private Tile _cave1;
+    private Tile _jungle1;
     [SerializeField]
-    private Tile _cave2;
+    private Tile _jungle2;
     [SerializeField]
-    private Tile _cave3;
+    private Tile _jungle3;
     [SerializeField]
-    private Tile _cave4;
+    private Tile _jungle4;
 
     [SerializeField]
     private Tile _rocks1;
@@ -75,13 +78,13 @@ public class TerrainPicker : MonoBehaviour
     private Tile _snow4;
 
     [SerializeField]
-    private Tile _ice1;
+    private Tile _island1;
     [SerializeField]
-    private Tile _ice2;
+    private Tile _island2;
     [SerializeField]
-    private Tile _ice3;
+    private Tile _island3;
     [SerializeField]
-    private Tile _ice4;
+    private Tile _island4;
 
     [SerializeField]
     private Tile _crater1;
@@ -110,6 +113,24 @@ public class TerrainPicker : MonoBehaviour
     [SerializeField]
     private Tile _sand4;
 
+    [SerializeField]
+    private Color waterColor;
+    [SerializeField]
+    private Color sandColor;
+    [SerializeField]
+    private Color lavaColor;
+    [SerializeField]
+    private Color snowColor;
+    [SerializeField]
+    private Color rockColor;
+    [SerializeField]
+    private Color craterColor;
+    [SerializeField]
+    private Color jungleColor;
+    [SerializeField]
+    private Color islandColor;
+
+
     // private Tile TerrainBase;
 
     private Tile _opt1;
@@ -117,10 +138,10 @@ public class TerrainPicker : MonoBehaviour
     private Tile _opt3;
     private Tile _opt4;
 
-    public string _terrainLabel = "crater";
+    public string _terrainLabel = "rock";
 
     void Start(){
-        setTiles();
+        setTiles(_terrainLabel);
     }
 
     private void setTiles(string selectedTerrain="random"){
@@ -168,19 +189,19 @@ public class TerrainPicker : MonoBehaviour
             _opt4 = _lava4;
             _terrainLabel = "lava";
             break;
-        case "cave":
-            _opt1 = _cave1;
-            _opt2 = _cave2;
-            _opt3 = _cave3;
-            _opt4 = _cave4;
-            _terrainLabel = "cave";
+        case "jungle":
+            _opt1 = _jungle1;
+            _opt2 = _jungle2;
+            _opt3 = _jungle3;
+            _opt4 = _jungle4;
+            _terrainLabel = "jungle";
             break;
-        case "ice":
-            _opt1 = _ice1;
-            _opt2 = _ice2;
-            _opt3 = _ice3;
-            _opt4 = _ice4;
-            _terrainLabel = "ice";
+        case "island":
+            _opt1 = _island1;
+            _opt2 = _island2;
+            _opt3 = _island3;
+            _opt4 = _island4;
+            _terrainLabel = "island";
             break;
         case "snow":
             _opt1 = _snow1;
@@ -203,6 +224,45 @@ public class TerrainPicker : MonoBehaviour
 
         // TerrainBase = pickRandomTerrain();
         // pickRandomTerrain();
+
+        //Set the Color to the values gained from the Sliders
+        Color background_color;
+
+
+        switch(_terrainLabel){
+            case "crater":
+                background_color = craterColor;
+                break;
+            case "sand":
+                background_color = sandColor;
+                break;
+            case "rock":
+                background_color = rockColor;
+                break;
+            case "lava":
+                background_color = lavaColor;
+                break;
+            case "jungle":
+                background_color = jungleColor;
+                break;
+            case "island":
+                background_color = islandColor;
+                break;
+            case "snow":
+                background_color = snowColor;
+                break;
+            case "water":
+                background_color = waterColor;
+                break;
+            default:
+                background_color = new Color(255,255,255);
+                break;
+        }
+
+        
+        SpriteRenderer spriteRending= _background.GetComponent<SpriteRenderer>();
+        //Set the SpriteRenderer to the Color defined by the Sliders
+        spriteRending.color = background_color;
 
         for(int i=lowX; i<hiX+1;i++){
             for(int j=lowY; j<hiY+1;j++){
@@ -273,18 +333,18 @@ public class TerrainPicker : MonoBehaviour
             _terrainLabel = "lava";
             return;
         case 5:
-            _opt1 = _cave1;
-            _opt2 = _cave2;
-            _opt3 = _cave3;
-            _opt4 = _cave4;
-            _terrainLabel = "cave";
+            _opt1 = _jungle1;
+            _opt2 = _jungle2;
+            _opt3 = _jungle3;
+            _opt4 = _jungle4;
+            _terrainLabel = "jungle";
             return;
         case 6:
-            _opt1 = _ice1;
-            _opt2 = _ice2;
-            _opt3 = _ice3;
-            _opt4 = _ice4;
-            _terrainLabel = "ice";
+            _opt1 = _island1;
+            _opt2 = _island2;
+            _opt3 = _island3;
+            _opt4 = _island4;
+            _terrainLabel = "island";
             return;
         case 7:
             _opt1 = _snow1;

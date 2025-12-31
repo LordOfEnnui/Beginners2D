@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 14ef5d05c0021614e91fb7bc1df02f6a
+guid: 49d690eb6240a5344b024675147f0b48
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2628444993156708228
-    second: sandtiles_0
+      213: 3848394332933392033
+    second: snowtiles_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,11 +109,24 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: sandtiles_0
+      name: snowtiles_0
       rect:
         serializedVersion: 2
         x: 0
@@ -128,14 +141,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c788d3f6433e58bd0800000000000000
-      internalID: -2628444993156708228
+      spriteID: 1a60f12914e386530800000000000000
+      internalID: 3848394332933392033
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sandtiles_1
+      name: snowtiles_1
       rect:
         serializedVersion: 2
         x: 16
@@ -150,14 +163,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a14c7e9010fae5d489e866e2c21a57fd
-      internalID: -445698865
+      spriteID: 22a1cf5cfee25a84789276d739fba77e
+      internalID: -1697873715
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sandtiles_2
+      name: snowtiles_2
       rect:
         serializedVersion: 2
         x: 32
@@ -172,14 +185,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 024400b483c39ef4889d39ac5442512e
-      internalID: 1356315445
+      spriteID: 8cd0ff14c5df88a438bab72335f08476
+      internalID: -643489048
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sandtiles_3
+      name: snowtiles_3
       rect:
         serializedVersion: 2
         x: 48
@@ -194,8 +207,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fdc56ad5fcca2634cb0b0fad11336657
-      internalID: 417939841
+      spriteID: 10f938fa20eb9a045815cd2aa38af92e
+      internalID: 896330420
       vertices: []
       indices: 
       edges: []
@@ -204,7 +217,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: d5957dba0c33a4543ad6b4056747b85c
+    spriteID: ff602e2475740ff4d9c6124924192077
     internalID: 0
     vertices: []
     indices: 
@@ -216,10 +229,10 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":4.0,"y":1.0},"gridSpriteSize":{"x":16.0,"y":16.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":1.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":1,"pivotUnitMode":1,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      sandtiles_0: -2628444993156708228
-      sandtiles_1: -445698865
-      sandtiles_2: 1356315445
-      sandtiles_3: 417939841
+      snowtiles_0: 3848394332933392033
+      snowtiles_1: -1697873715
+      snowtiles_2: -643489048
+      snowtiles_3: 896330420
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

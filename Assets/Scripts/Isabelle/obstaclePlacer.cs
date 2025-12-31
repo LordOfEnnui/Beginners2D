@@ -13,7 +13,7 @@ public class obstaclePlacer : MonoBehaviour
     private Tilemap _tilemap;
 
     [SerializeField]
-    private Sprite _caveObstacle;
+    private Sprite _jungleObstacle;
 
     [SerializeField]
     private Sprite _rockObstacle;
@@ -22,7 +22,7 @@ public class obstaclePlacer : MonoBehaviour
     private Sprite _craterObstacle;
     
     [SerializeField]
-    private Sprite _iceObstacle;
+    private Sprite _islandObstacle;
     
     [SerializeField]
     private Sprite _snowObstacle;
@@ -88,11 +88,11 @@ public class obstaclePlacer : MonoBehaviour
                         case "lava":
                             spriteRending.sprite=_lavaObstacle;
                             break;
-                        case "cave":
-                            spriteRending.sprite=_caveObstacle;
+                        case "jungle":
+                            spriteRending.sprite=_jungleObstacle;
                             break;
-                        case "ice":
-                            spriteRending.sprite=_iceObstacle;
+                        case "island":
+                            spriteRending.sprite=_islandObstacle;
                             break;
                         case "snow":
                             spriteRending.sprite=_snowObstacle;

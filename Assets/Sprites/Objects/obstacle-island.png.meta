@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 3c5c8a96e8963534ab834f2a83c40fc7
+guid: 6b0c30edda123ef4f805ca3edcb93541
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1014915502852105477
-    second: cratertiles_0
+      213: -2554821164549685884
+    second: obstacle-island_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,93 +109,40 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: cratertiles_0
+      name: obstacle-island_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 16
-        height: 16
-      alignment: 1
-      pivot: {x: 0, y: 1}
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bfa96773abb4ae1f0800000000000000
-      internalID: -1014915502852105477
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cratertiles_1
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 0
-        width: 16
-        height: 16
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8fd0d1cc7314f6c43a68b0211e98e0f5
-      internalID: -2050339039
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cratertiles_2
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 16
-        height: 16
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bd746b612d2fe72448533ff89261c55d
-      internalID: -1765483616
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cratertiles_3
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 16
-        height: 16
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e9e01e40d6a13a5488a4b55ec596206d
-      internalID: -806646041
+      spriteID: 48dbd56dfa37b8cd0800000000000000
+      internalID: -2554821164549685884
       vertices: []
       indices: 
       edges: []
@@ -204,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 51f8fa53f15bef145af777dd1637f9b3
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -212,14 +159,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":4.0,"y":1.0},"gridSpriteSize":{"x":16.0,"y":16.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":1.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":1,"pivotUnitMode":1,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
-      cratertiles_0: -1014915502852105477
-      cratertiles_1: -2050339039
-      cratertiles_2: -1765483616
-      cratertiles_3: -806646041
+      obstacle-island_0: -2554821164549685884
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
