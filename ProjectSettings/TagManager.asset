@@ -21,7 +21,7 @@ TagManager:
   - PlayerAbility
   - Enemy
   - EnemyAbility
-  - 
+  - Pickup
   - 
   - 
   - 
@@ -42,6 +42,12 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 3301813237
+    locked: 0
+  - name: Player
+    uniqueID: 1569564547
     locked: 0
   m_RenderingLayers:
   - Default
