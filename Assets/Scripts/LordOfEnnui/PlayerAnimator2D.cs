@@ -14,10 +14,11 @@ public class PlayerAnimator2D : MonoBehaviour
 
     [Header("Particles")]
     [SerializeField]
-    ParticleSystem[] thrustParticles;
+    ParticleSystem thrustParticles, sprintParticles;
+    ParticleSystemRenderer thrustRenderer, sprintRenderer;
 
     [SerializeField]
-    float particlesPerSecond = 200f, sprintParticles = 1000f;
+    float particlesPerSecond = 200f, sprintParticleCount = 1000f;
 
     [SerializeField, Header("ReadOnly")]
     bool facingRight = true;
@@ -38,6 +39,8 @@ public class PlayerAnimator2D : MonoBehaviour
     {
         animator = GetComponent<Animator>();    
         strat = gameObject.GetComponentInParent<PlayerInputStrategy>();
+        thrustRenderer = thrustParticles.gameObject.GetComponent<ParticleSystemRenderer>();
+        sprintRenderer = sprintParticles.gameObject.GetComponent<ParticleSystemRenderer>();
     }
 
     void FixedUpdate()
@@ -68,12 +71,13 @@ public class PlayerAnimator2D : MonoBehaviour
             
             state = lookRight ? 1 : lookUp ? 2 : lookLeft ? 3 : lookDown ? 4 : -1;
 
-            int particles = Mathf.FloorToInt(strat.isSprinting? sprintParticles : particlesPerSecond * Time.fixedDeltaTime);
-            thrustParticles[0].Emit(lookLeft? particles : 0);
-            thrustParticles[1].Emit(lookDown ? particles : 0);
-            thrustParticles[2].Emit(lookRight ? particles : 0);
-            thrustParticles[3].Emit(lookUp ? particles : 0);
-
+            int particles = Mathf.FloorToInt(strat.isSprinting? sprintParticleCount : particlesPerSecond * Time.fixedDeltaTime);
+            ParticleSystem pSys = strat.isSprinting ? sprintParticles : thrustParticles;
+            ParticleSystemRenderer pRend = strat.isSprinting ? thrustRenderer : sprintRenderer;
+            float direction = lookLeft ? 0 : lookDown ? 90 : lookRight ? 180 : lookUp ? 270 : -30;
+            pSys.transform.eulerAngles = new(0, 0, direction);
+            pRend.sortingOrder = lookUp ? 100 : 0;
+            pSys.Emit(particles);
         } else {
             state = 0;
         }

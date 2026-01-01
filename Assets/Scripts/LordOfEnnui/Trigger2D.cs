@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(Collider2D))]
 public class Trigger2D : MonoBehaviour
 {
     public bool triggerActive, playerInside;
@@ -33,7 +32,7 @@ public class Trigger2D : MonoBehaviour
 
     public void SetActive(bool active) {
         triggerActive = active;
-        if (spriteRenderer != null ) spriteRenderer.color = triggerActive ? playerInside ? Color.blue : Color.green : Color.red;
+        if (spriteRenderer != null) spriteRenderer.color = triggerActive ? playerInside ? Color.blue : Color.green : Color.red;
         OnValidate();
     }
 

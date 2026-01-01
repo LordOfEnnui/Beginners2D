@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyStatus2D : ACharacterStatus2D
+public class EnemyCollision2D : ACharacterCollision2D
 {
     [SerializeField]
     protected int maxHealth = 5, currentHealth = 4;
@@ -9,7 +9,7 @@ public class EnemyStatus2D : ACharacterStatus2D
         return other.layer == Layers.PlayerAbility;
     }
 
-    protected override void OnDamageTaken() {
+    protected override void OnHit() {
         currentHealth = currentHealth > maxHealth ? maxHealth : currentHealth;
         currentHealth--;
         if (currentHealth < 0) {

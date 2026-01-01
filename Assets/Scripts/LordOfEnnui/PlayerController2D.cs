@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerController2D : MonoBehaviour {
     Rigidbody2D body;
     PlayerInputStrategy moveStrat;
-    PlayerStatus2D status;
+    PlayerCollision2D status;
 
     [SerializeField]
     float maxSpeed = 5, maxAcceleration = 20, 
@@ -26,7 +26,7 @@ public class PlayerController2D : MonoBehaviour {
     private void Start() {
         body = GetComponent<Rigidbody2D>();
         moveStrat = GetComponent<PlayerInputStrategy>();
-        TryGetComponent<PlayerStatus2D>(out status);
+        TryGetComponent<PlayerCollision2D>(out status);
     }
 
     void Update() {

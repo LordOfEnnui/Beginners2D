@@ -98,7 +98,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 9c397937ab665e34ab6acccc268684d0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -233,7 +233,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   maxSpeed: 10
-  maxSpeedFiring: 3
   maxAcceleration: 5
   turnSpeed: 2
   facingType: 1
@@ -272,11 +271,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47490cdc3b4a8464ea1d29996155d875, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  maxHealth: 5
-  currentHealth: 4
   contactKnockbackForce: 10
+  hitThisFrame: 0
   rb: {fileID: 0}
   spriteRenderer: {fileID: 0}
+  maxHealth: 5
+  currentHealth: 4
 --- !u!1 &5446497294059313999
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,7 +335,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 9c397937ab665e34ab6acccc268684d0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
