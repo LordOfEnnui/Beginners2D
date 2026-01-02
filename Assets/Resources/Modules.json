@@ -1,0 +1,58 @@
+{
+  "modules": [
+    {
+      "id": "cryo_treads",
+      "name": "Cryo Treads",
+      "description": "Freeze enemies on hit, but movement speed is reduced.",
+      "speedMultiplier": 0.8,
+      "healthModifier": 0,
+      "abilities": ["FreezeEnemies"],
+      "rarity": "Uncommon"
+    },
+    {
+      "id": "overclock_engine",
+      "name": "Overclock Engine",
+      "description": "Greatly increases speed, but lowers max health.",
+      "speedMultiplier": 1.5,
+      "healthModifier": -20,
+      "abilities": ["Overclock"],
+      "rarity": "Rare"
+    },
+    {
+      "id": "reinforced_chassis",
+      "name": "Reinforced Chassis",
+      "description": "Increases max health, but slows the rover.",
+      "speedMultiplier": 0.85,
+      "healthModifier": 30,
+      "abilities": [],
+      "rarity": "Common"
+    },
+    {
+      "id": "oil_siphon",
+      "name": "Oil Siphon",
+      "description": "Gain extra oil from enemies, but take damage over time.",
+      "speedMultiplier": 1.0,
+      "healthModifier": 0,
+      "abilities": ["OilLeech", "HealthDrain"],
+      "rarity": "Uncommon"
+    },
+    {
+      "id": "quantum_thrusters",
+      "name": "Quantum Thrusters",
+      "description": "Massive speed boost with unstable controls.",
+      "speedMultiplier": 1.8,
+      "healthModifier": -10,
+      "abilities": ["UnstableMovement"],
+      "rarity": "Rare"
+    },
+    {
+      "id": "auto_repair_nanobots",
+      "name": "Auto-Repair Nanobots",
+      "description": "Slowly regenerate health, but reduce maximum speed.",
+      "speedMultiplier": 0.9,
+      "healthModifier": 10,
+      "abilities": ["HealthRegen"],
+      "rarity": "Uncommon"
+    }
+  ]
+}
