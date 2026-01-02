@@ -1,24 +1,25 @@
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class ModuleButton : MonoBehaviour
 {
-    public Image icon;
-    public Text nameText;
-    public Text descriptionText;
+    public TextMeshProUGUI nameText;
+    public TextMeshProUGUI descriptionText;
 
-    ModuleData module;
+    private ModuleJson moduleData;
+    private ModuleSelectionUI selectionUI;
 
-    public void Setup(ModuleData data)
+    public void Setup(ModuleJson data, ModuleSelectionUI ui)
     {
-        module = data;
-        icon.sprite = data.icon;
-        nameText.text = data.moduleName;
+        moduleData = data;
+        selectionUI = ui;
+
+        nameText.text = data.name;
         descriptionText.text = data.description;
     }
 
     public void OnClick()
     {
-        ModuleRewardManager.Instance.OnModuleChosen(module);
+        selectionUI.SelectModule(moduleData);
     }
 }
