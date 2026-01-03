@@ -6,6 +6,7 @@ using Zenject;
 
 
 public class PlayerSounds : MonoBehaviour {
+    
     [Header("One-Shot Events")]
     [SerializeField] private EventReference jumpSound;
     [SerializeField] private EventReference dashSound;
@@ -20,8 +21,9 @@ public class PlayerSounds : MonoBehaviour {
 
     [Header("Looped Events")]
     [SerializeField] private EventReference movingSound;
+    private const string speedParamName = "Speed";
     [SerializeField] private EventReference shieldSound;
-
+    private const string ShiedlStrengthParamName = "Strength";
     // Інстанси створюємо один раз
     private EventInstance _movingInstance;
     private EventInstance _shieldInstance;
@@ -58,7 +60,7 @@ public class PlayerSounds : MonoBehaviour {
     public void SetMovementSpeed(float speed) {
         if (!_movingInstance.isValid()) return;
 
-        _movingInstance.setParameterByName("Speed", Mathf.Clamp01(speed));
+        _movingInstance.setParameterByName(speedParamName, Mathf.Clamp01(speed));
     }
 
     #endregion
@@ -78,7 +80,7 @@ public class PlayerSounds : MonoBehaviour {
     public void SetShieldStrength(float strength) {
         if (!_shieldInstance.isValid()) return;
 
-        _shieldInstance.setParameterByName("Strength", Mathf.Clamp01(strength));
+        _shieldInstance.setParameterByName(ShiedlStrengthParamName, Mathf.Clamp01(strength));
     }
 
     #endregion
