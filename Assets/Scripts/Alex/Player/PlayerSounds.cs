@@ -98,6 +98,7 @@ public class PlayerSounds : MonoBehaviour {
     
     public void PlaySwordHit() => PlayOneShot(swordHit);
     public void PlayGunHit() => PlayOneShot(gunHit);
+
     public void PlayPickUp() => PlayOneShot(pickUp);
     public void PlayFullOil() => PlayOneShot(fullOil);
     public void PlayFoundModule() => PlayOneShot(foundModule);
