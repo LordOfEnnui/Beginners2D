@@ -1,0 +1,1380 @@
+fileFormatVersion: 2
+guid: a8999666028e2a04f95cd715559066f4
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5254467475242279065
+    second: alien enemy_0
+  - first:
+      213: 2094621610551028440
+    second: alien enemy_1
+  - first:
+      213: -4243783786677146893
+    second: alien enemy_2
+  - first:
+      213: 296040425191832814
+    second: alien enemy_3
+  - first:
+      213: -3362141592091119256
+    second: alien enemy_4
+  - first:
+      213: 5319074941418125290
+    second: alien enemy_5
+  - first:
+      213: 5306428017770359823
+    second: alien enemy_6
+  - first:
+      213: 1627011481994402486
+    second: alien enemy_7
+  - first:
+      213: 7397801714829032979
+    second: alien enemy_8
+  - first:
+      213: -419774298136382492
+    second: alien enemy_9
+  - first:
+      213: 696492620803114691
+    second: alien enemy_10
+  - first:
+      213: -3214009480039706642
+    second: alien enemy_11
+  - first:
+      213: 5378910444076974003
+    second: alien enemy_12
+  - first:
+      213: 4634794516602511033
+    second: alien enemy_13
+  - first:
+      213: -1629372749093854008
+    second: alien enemy_14
+  - first:
+      213: 4775174218456605836
+    second: alien enemy_15
+  - first:
+      213: -5873544198592300092
+    second: alien enemy_16
+  - first:
+      213: 4131338721595479403
+    second: alien enemy_17
+  - first:
+      213: 2454643643759995723
+    second: alien enemy_18
+  - first:
+      213: -7976927668215675840
+    second: alien enemy_19
+  - first:
+      213: -8426618638788240342
+    second: alien enemy_20
+  - first:
+      213: 1446107868393171542
+    second: alien enemy_21
+  - first:
+      213: -5750457943891851043
+    second: alien enemy_22
+  - first:
+      213: 3771390921074749741
+    second: alien enemy_23
+  - first:
+      213: -1674337623207147610
+    second: alien enemy_24
+  - first:
+      213: 5956019625038569228
+    second: alien enemy_25
+  - first:
+      213: 7867508636225049875
+    second: alien enemy_26
+  - first:
+      213: 782285134246857948
+    second: alien enemy_27
+  - first:
+      213: -2694157892525806763
+    second: alien enemy_28
+  - first:
+      213: 1733960280412568716
+    second: alien enemy_29
+  - first:
+      213: 934555964485727163
+    second: alien enemy_30
+  - first:
+      213: 176227874698543068
+    second: alien enemy_31
+  - first:
+      213: 5246464054577921258
+    second: alien enemy_32
+  - first:
+      213: 4055941766449000421
+    second: alien enemy_33
+  - first:
+      213: 5771621044055893474
+    second: alien enemy_34
+  - first:
+      213: -7875890892548980453
+    second: alien enemy_35
+  - first:
+      213: 5882638305567477594
+    second: alien enemy_36
+  - first:
+      213: -1852909264208028728
+    second: alien enemy_37
+  - first:
+      213: -3264911270445797640
+    second: alien enemy_38
+  - first:
+      213: -7839237723171318978
+    second: alien enemy_39
+  - first:
+      213: -6580942699090261862
+    second: alien enemy_40
+  - first:
+      213: -2211225629510988171
+    second: alien enemy_41
+  - first:
+      213: 5949052937109818738
+    second: alien enemy_42
+  - first:
+      213: 4948892851053868401
+    second: alien enemy_43
+  - first:
+      213: 6208288330221919229
+    second: alien enemy_44
+  - first:
+      213: -4411083440157510687
+    second: alien enemy_45
+  - first:
+      213: -4684727230303172467
+    second: alien enemy_46
+  - first:
+      213: 2356554661996721145
+    second: alien enemy_47
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 64
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: alien enemy_0
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 705
+        width: 26
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76f175eaba16417b0800000000000000
+      internalID: -5254467475242279065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien enemy_1
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 705
+        width: 27
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8da20cbc147911d10800000000000000
+      internalID: 2094621610551028440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien enemy_2
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 705
+        width: 26
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3faeb8b612d0b15c0800000000000000
+      internalID: -4243783786677146893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien enemy_3
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 705
+        width: 29
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eecf6beb23fbb1400800000000000000
+      internalID: 296040425191832814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien enemy_4
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 640
+        width: 19
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 861b7de09064751d0800000000000000
+      internalID: -3362141592091119256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien enemy_5
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 640
+        width: 19
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae7b8e04a7621d940800000000000000
+      internalID: 5319074941418125290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien enemy_6
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 640
+        width: 20
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0ce161ea2834a940800000000000000
+      internalID: 5306428017770359823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien enemy_7
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 640
+        width: 19
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ba12c5925e449610800000000000000
+      internalID: 1627011481994402486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien enemy_8
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 577
+        width: 26
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31ef823e6754aa660800000000000000
+      internalID: 7397801714829032979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien enemy_9
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 577
+        width: 26
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e3fdb9ff79ac2af0800000000000000
+      internalID: -419774298136382492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien enemy_10
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 577
+        width: 30
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c686a339507aa900800000000000000
+      internalID: 696492620803114691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien enemy_11
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 577
+        width: 26
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eefce7d086b8563d0800000000000000
+      internalID: -3214009480039706642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien enemy_12
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 516
+        width: 19
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3bfb8d9dc8ab5aa40800000000000000
+      internalID: 5378910444076974003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien enemy_13
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 516
+        width: 19
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9be55018e09125040800000000000000
+      internalID: 4634794516602511033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien enemy_14
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 516
+        width: 23
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c42f831e1e4369e0800000000000000
+      internalID: -1629372749093854008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien enemy_15
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 516
+        width: 19
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c84a5b7d6a3d44240800000000000000
+      internalID: 4775174218456605836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien enemy_16
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 449
+        width: 26
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4cb7956bbaafc7ea0800000000000000
+      internalID: -5873544198592300092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien enemy_17
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 449
+        width: 28
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b65d383bda6755930800000000000000
+      internalID: 4131338721595479403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien enemy_18
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 449
+        width: 25
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4b2c748365a01220800000000000000
+      internalID: 2454643643759995723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien enemy_19
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 450
+        width: 25
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0440501ac824c4190800000000000000
+      internalID: -7976927668215675840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien enemy_20
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 384
+        width: 19
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2c57518ef2ae0b80800000000000000
+      internalID: -8426618638788240342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien enemy_21
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 386
+        width: 20
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65ae87ac17b911410800000000000000
+      internalID: 1446107868393171542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien enemy_22
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 390
+        width: 16
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd8c08e97f44230b0800000000000000
+      internalID: -5750457943891851043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien enemy_23
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 388
+        width: 16
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d213bcf9f0ca65430800000000000000
+      internalID: 3771390921074749741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien enemy_24
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 321
+        width: 26
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a78aae7dce83c8e0800000000000000
+      internalID: -1674337623207147610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien enemy_25
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 322
+        width: 29
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0fdda9ea4808a250800000000000000
+      internalID: 5956019625038569228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien enemy_26
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 321
+        width: 25
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3151389bb610f2d60800000000000000
+      internalID: 7867508636225049875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien enemy_27
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 322
+        width: 25
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cdc4ad35f2c3bda00800000000000000
+      internalID: 782285134246857948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien enemy_28
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 260
+        width: 19
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55b2f27cbad6c9ad0800000000000000
+      internalID: -2694157892525806763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien enemy_29
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 257
+        width: 21
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8cb0a820b3401810800000000000000
+      internalID: 1733960280412568716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien enemy_30
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 261
+        width: 17
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb3f4edb2b538fc00800000000000000
+      internalID: 934555964485727163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien enemy_31
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 259
+        width: 16
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cdfbdee7156127200800000000000000
+      internalID: 176227874698543068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien enemy_32
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 193
+        width: 27
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aecf8fbb24f2fc840800000000000000
+      internalID: 5246464054577921258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien enemy_33
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 193
+        width: 25
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5efecda1c89994830800000000000000
+      internalID: 4055941766449000421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien enemy_34
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 194
+        width: 25
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e5ee1d92cae81050800000000000000
+      internalID: 5771621044055893474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien enemy_35
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 193
+        width: 25
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1142e326f633b290800000000000000
+      internalID: -7875890892548980453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien enemy_36
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 130
+        width: 19
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5f84711f5453a150800000000000000
+      internalID: 5882638305567477594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien enemy_37
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 134
+        width: 16
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8cb99d167d42946e0800000000000000
+      internalID: -1852909264208028728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien enemy_38
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 130
+        width: 16
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fea8ed6f74b0b2d0800000000000000
+      internalID: -3264911270445797640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien enemy_39
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 131
+        width: 16
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e33188823de653390800000000000000
+      internalID: -7839237723171318978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien enemy_40
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 65
+        width: 27
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9846858b7bcba4a0800000000000000
+      internalID: -6580942699090261862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien enemy_41
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 65
+        width: 25
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57e02ca61062051e0800000000000000
+      internalID: -2211225629510988171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien enemy_42
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 66
+        width: 25
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27dcc6a70284f8250800000000000000
+      internalID: 5949052937109818738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien enemy_43
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 65
+        width: 25
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1753982e3dffda440800000000000000
+      internalID: 4948892851053868401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien enemy_44
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 1
+        width: 24
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dfb941ae755482650800000000000000
+      internalID: 6208288330221919229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien enemy_45
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 4
+        width: 17
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e3bdca6bfea8c2c0800000000000000
+      internalID: -4411083440157510687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien enemy_46
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 2
+        width: 16
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d880e20a7618cfeb0800000000000000
+      internalID: -4684727230303172467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alien enemy_47
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 1
+        width: 16
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f3fa12caf924b020800000000000000
+      internalID: 2356554661996721145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 2778025f8201d6e47ab6522cb0b39162
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      alien enemy_0: -5254467475242279065
+      alien enemy_1: 2094621610551028440
+      alien enemy_10: 696492620803114691
+      alien enemy_11: -3214009480039706642
+      alien enemy_12: 5378910444076974003
+      alien enemy_13: 4634794516602511033
+      alien enemy_14: -1629372749093854008
+      alien enemy_15: 4775174218456605836
+      alien enemy_16: -5873544198592300092
+      alien enemy_17: 4131338721595479403
+      alien enemy_18: 2454643643759995723
+      alien enemy_19: -7976927668215675840
+      alien enemy_2: -4243783786677146893
+      alien enemy_20: -8426618638788240342
+      alien enemy_21: 1446107868393171542
+      alien enemy_22: -5750457943891851043
+      alien enemy_23: 3771390921074749741
+      alien enemy_24: -1674337623207147610
+      alien enemy_25: 5956019625038569228
+      alien enemy_26: 7867508636225049875
+      alien enemy_27: 782285134246857948
+      alien enemy_28: -2694157892525806763
+      alien enemy_29: 1733960280412568716
+      alien enemy_3: 296040425191832814
+      alien enemy_30: 934555964485727163
+      alien enemy_31: 176227874698543068
+      alien enemy_32: 5246464054577921258
+      alien enemy_33: 4055941766449000421
+      alien enemy_34: 5771621044055893474
+      alien enemy_35: -7875890892548980453
+      alien enemy_36: 5882638305567477594
+      alien enemy_37: -1852909264208028728
+      alien enemy_38: -3264911270445797640
+      alien enemy_39: -7839237723171318978
+      alien enemy_4: -3362141592091119256
+      alien enemy_40: -6580942699090261862
+      alien enemy_41: -2211225629510988171
+      alien enemy_42: 5949052937109818738
+      alien enemy_43: 4948892851053868401
+      alien enemy_44: 6208288330221919229
+      alien enemy_45: -4411083440157510687
+      alien enemy_46: -4684727230303172467
+      alien enemy_47: 2356554661996721145
+      alien enemy_5: 5319074941418125290
+      alien enemy_6: 5306428017770359823
+      alien enemy_7: 1627011481994402486
+      alien enemy_8: 7397801714829032979
+      alien enemy_9: -419774298136382492
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
