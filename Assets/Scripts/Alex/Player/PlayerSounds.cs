@@ -51,6 +51,7 @@ public class PlayerSounds : MonoBehaviour {
     private void InitializeLoopSounds() {
         movingSound.Initialize(transform);
         shieldSound.Initialize(transform);
+        minigun.Initialize(transform);
     }
 
     #region Movement Sounds
@@ -139,13 +140,16 @@ public class PlayerSounds : MonoBehaviour {
     }
 
     private async UniTask StartTestSound() {
+        SetMovementSpeed(1f);
         SetMoving(true);
         await UniTask.WaitForSeconds(2);
         SetMoving(false);
         await UniTask.WaitForSeconds(2);
         SetMoving(true);
+        SetMovementSpeed(0.5f);
         await UniTask.WaitForSeconds(2);
         SetMoving(false);
+        SetMovementSpeed(0f);
     }
 #endif
 }
