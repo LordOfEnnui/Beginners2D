@@ -28,6 +28,9 @@ public class ProjectileShooter2D : MonoBehaviour
     [SerializeField, Range(0f, 1f)]
     float inheritVelocityMultiplier = 1.0f;
 
+    [SerializeField]
+    float highVelolcityFudge = 5f;
+
     [Header("ReadOnly")]
     [SerializeField]
     float timeToBullet;
@@ -72,11 +75,14 @@ public class ProjectileShooter2D : MonoBehaviour
             }
 
             Vector3 recoilDirection = Vector3.zero;
+            Vector3 startPosition = transform.position + highVelolcityFudge * Time.fixedDeltaTime * (Vector3) rb.linearVelocity;
+            float targetAngle = (shootStrat.TargetLocation() - startPosition).Get2DAngle();
             foreach (float fireStreamOffset in fireStreams) {
-                Vector3 spreadDirection = Quaternion.AngleAxis(Random.Range(-shootParams.fireSpread, shootParams.fireSpread) + shootStrat.FireAngle() + fireStreamOffset, transform.forward) * transform.right;
-                Vector3 placePosition = transform.position + spreadDirection * shootParams.placeDistance;
+                Vector3 spreadDirection = Quaternion.AngleAxis(Random.Range(-shootParams.fireSpread, shootParams.fireSpread) + targetAngle + fireStreamOffset, transform.forward) * transform.right;
+                Vector3 placePosition = startPosition + spreadDirection * shootParams.placeDistance; 
 
-                GameObject bo = Instantiate(bulletObject, placePosition, Quaternion.identity);
+                GameObject bo = Instantiate(bulletObject, placePosition, Quaternion.identity, transform);
+                bo.transform.SetParent(null, true);
                 bo.SetActive(true);
                 bo.GetComponent<Rigidbody2D>().linearVelocity = inheritVelocityMultiplier * Mathf.Max(Vector3.Dot(rb.linearVelocity.normalized, spreadDirection), 0) * rb.linearVelocity + (Vector2) spreadDirection * shootParams.bulletSpeed; 
                 recoilDirection += spreadDirection;

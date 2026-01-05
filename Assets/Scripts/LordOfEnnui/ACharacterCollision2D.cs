@@ -17,6 +17,9 @@ public abstract class ACharacterCollision2D : MonoBehaviour {
     [SerializeField]
     protected SpriteRenderer spriteRenderer;
 
+    [SerializeField]
+    protected ParticleSystem damageParticles;
+
     private void FixedUpdate() {
         hitThisFrame = false;
     }
@@ -27,19 +30,32 @@ public abstract class ACharacterCollision2D : MonoBehaviour {
     }
 
     protected virtual void OnCollisionEnter2D(Collision2D collision) {
+        HandleCollision(collision.collider);
+    }
+
+    protected virtual void OnTriggerEnter2D(Collider2D collision) {
+        HandleCollision(collision);
+    }
+
+    protected virtual void HandleCollision(Collider2D collision) {
         if (OnCollsionIsDamaged(collision.gameObject)) {
             if (!hitThisFrame) {
                 OnHit(collision.gameObject);
-                hitThisFrame |= true;
             }
         }
     }
 
     protected abstract bool OnCollsionIsDamaged(GameObject other);
 
-    public abstract void OnHit(GameObject gameObject, int damage = 1);
+    public virtual void OnHit(GameObject gameObject, int damage = 1) {
+        hitThisFrame |= true;
+    }
 
     public virtual void Knockback(Vector3 direction, float force) {
-        rb.AddForce(direction.normalized * force * rb.mass, ForceMode2D.Impulse);
+        rb.AddForce(force * rb.mass * direction.normalized, ForceMode2D.Impulse);
+    }
+
+    protected virtual void HandleDamageParticles() {
+        if (damageParticles != null) damageParticles.Play();
     }
 }

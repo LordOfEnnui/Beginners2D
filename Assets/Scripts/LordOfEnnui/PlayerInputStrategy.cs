@@ -13,9 +13,9 @@ public class PlayerInputStrategy : ACharacterStrategy {
     [SerializeField, Range(0f, 0.5f)]
     float inputQueueTime = 0.1f;
 
-    [SerializeField, Range(0f, 20f)]
+    [SerializeField, Range(0f, 180f)]
     float maxAimAssist = 5f;
-    [SerializeField, Range(0f, 20f)]
+    [SerializeField, Range(0f, 40f)]
     float aimAssistRange = 20f;
 
     [SerializeField]
@@ -30,7 +30,7 @@ public class PlayerInputStrategy : ACharacterStrategy {
     [SerializeField]
     bool sprintInputQueued, attackInput;
     [SerializeField]
-    Vector3 moveDirection, lookDirection;
+    Vector3 moveDirection, lookDirection, lookPoint;
     [SerializeField]
     float firingMoveSpeedMultiplier = 1.0f;
     [SerializeField]
@@ -39,7 +39,7 @@ public class PlayerInputStrategy : ACharacterStrategy {
     [Header("State")]
     public bool sprintActive = true, canSprint = true, canAttack = true, canMove = true;
     public bool isSprinting = false, isAttacking = false, inputQueued = false;
-    public float aimAngle;
+    public float aimAngle, assistAngle;
 
     [SerializeField]
     float inputQueueTimer;
@@ -120,21 +120,37 @@ public class PlayerInputStrategy : ACharacterStrategy {
     }
 
     public override float FireAngle() {
+        SetAssistAngle();
+
+        return aimAngle;
+    }
+
+    private bool SetAssistAngle() {
         closestEnemy = null;
         float closestDistance = float.MaxValue;
-        foreach (Collider2D collider in Physics2D.OverlapCircleAll(transform.position, aimAssistRange)) {
+        foreach (Collider2D collider in Physics2D.OverlapCircleAll(transform.position, aimAssistRange, 1 << Layers.Enemy)) {
             if (closestEnemy == null || Vector3.Distance(transform.position, collider.transform.position) < closestDistance) {
                 closestEnemy = collider.gameObject;
                 closestDistance = Vector3.Distance(transform.position, closestEnemy.transform.position);
             }
         }
         float assistAngle = aimAngle;
-        if (closestEnemy != null) (closestEnemy.transform.position - transform.position).Get2DAngle();
-
-        return aimAngle.GetAngularDistance(assistAngle) < maxAimAssist ? assistAngle : aimAngle;
+        if (closestEnemy != null) assistAngle = (closestEnemy.transform.position - transform.position).Get2DAngle();
+        bool assist = aimAngle.GetAngularDistance(assistAngle) < maxAimAssist;
+        if (assist) aimAngle = assistAngle;
+        return assist && (closestEnemy != null);
     }
 
     public override void OnFire() {
         pState.onFire.Invoke();
+    }
+
+    public override Vector3 TargetLocation() {
+        bool assist = SetAssistAngle();
+        if (assist) {
+            return closestEnemy.transform.position;
+        } else {
+            return transform.position + lookDirection * 300f;
+        }
     }
 }

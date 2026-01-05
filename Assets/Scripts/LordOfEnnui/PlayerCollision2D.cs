@@ -16,9 +16,6 @@ public class PlayerCollision2D : ACharacterCollision2D
     PlayerState pState;
 
     [SerializeField]
-    ParticleSystem damageParticles;
-
-    [SerializeField]
     int invCount;
 
     protected override void Start() {
@@ -35,8 +32,9 @@ public class PlayerCollision2D : ACharacterCollision2D
     }
 
     public override void OnHit(GameObject gameObject, int damage = 1) {
-        if (dashHitBox.isActiveAndEnabled) {
-            if (TryGetComponent(out EnemyCollision2D enemy)) {
+        base.OnHit(gameObject, damage);
+        if (dashHitBox.isActiveAndEnabled) { //Unity merges all colliders on an object, even if they are on a child object. WHYYYYYYYYYYYYYYY?! So we check which collider is active.
+            if (gameObject.layer == Layers.Enemy && gameObject.TryGetComponent(out EnemyCollision2D enemy)) {
                 enemy.OnHit(gameObject, pState.netMod.dashDamage.damage);
                 enemy.Knockback(enemy.transform.position - transform.position, dashKnockback);
             }
@@ -46,22 +44,18 @@ public class PlayerCollision2D : ACharacterCollision2D
         }    
     }
 
-    protected override void OnCollisionEnter2D(Collision2D collision) {
-        base.OnCollisionEnter2D(collision);
-
-        if (collision.gameObject.layer == Layers.Pickup) {
-            if (collision.gameObject.TryGetComponent(out OilPickup oil)) {
+    protected override void HandleCollision(Collider2D collision) {
+        base.HandleCollision(collision);
+        GameObject other = collision.gameObject;
+        if (other.layer == Layers.Pickup) {
+            if (other.TryGetComponent(out OilPickup oil)) {
                 pState.ObtainOil(oil);
-            } else if (collision.gameObject.TryGetComponent(out ModulePickup module)) {
+            } else if (other.TryGetComponent(out ModulePickup module)) {
                 pState.ModuleChoice(module);
             }
-            Destroy(collision.gameObject);
+            Destroy(other);
         }
-    }      
-    
-    protected void HandleDamageParticles() {
-        damageParticles.Play();
-    }
+    }     
     
     protected void HandleDamageInvincibility() {
         LayerMask invMask = Layers.GetInvMask(InvulnerabilityType.All);
@@ -91,7 +85,7 @@ public class PlayerCollision2D : ACharacterCollision2D
         float iTime = duration;
         if (flash) {
             int flashes = (int) (iTime * pState.flashesPerSecond);
-            WaitForSeconds timePerFlash = new WaitForSeconds(iTime / (flashes * 2));
+            WaitForSeconds timePerFlash = new(iTime / (flashes * 2));
 
             for (int i = 0; i < flashes; i++) {
                 spriteRenderer.material.SetFloat(hitEffectAmount, 1f);

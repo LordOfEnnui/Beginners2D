@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8371899358233087026}
   - component: {fileID: 2709742056831882534}
   - component: {fileID: 4177962080967060785}
-  - component: {fileID: 7995796857512943963}
+  - component: {fileID: 2431824988463353019}
   m_Layer: 0
   m_Name: GameManagers
   m_TagString: Untagged
@@ -55,7 +55,9 @@ MonoBehaviour:
   playerStatus: {fileID: 0}
   screenShaker: {fileID: 0}
   defaultPlayerState: {fileID: 11400000, guid: 29f02b145819a3345b8a78b7ce5afdfb, type: 2}
+  defaultLevelState: {fileID: 0}
   pState: {fileID: 0}
+  lState: {fileID: 0}
   LoadedModules: []
 --- !u!114 &8371899358233087026
 MonoBehaviour:
@@ -73,6 +75,7 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   moduleSelecter: {fileID: 0}
   pState: {fileID: 0}
+  lState: {fileID: 0}
 --- !u!114 &2709742056831882534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,7 +105,7 @@ MonoBehaviour:
   pState: {fileID: 0}
   screenShaker: {fileID: 0}
   damageShake: {fileID: 11400000, guid: 4d171369fad5f9a499c4e80f60a1ee9b, type: 2}
---- !u!114 &7995796857512943963
+--- !u!114 &2431824988463353019
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -111,10 +114,45 @@ MonoBehaviour:
   m_GameObject: {fileID: 421787591492012111}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbea512ef0ccd8b48beb6127e97e77b3, type: 3}
+  m_Script: {fileID: 11500000, guid: fd247a97fda0ab7469a3d4d8cfa3005a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSounds
   pState: {fileID: 0}
+  swordHit:
+    Guid:
+      Data1: 655503028
+      Data2: 1161781543
+      Data3: -1831331912
+      Data4: 1828995726
+    Path: event:/Characters/Player/SwordHit
+  gunHit:
+    Guid:
+      Data1: -53650805
+      Data2: 1129154960
+      Data3: 1028364984
+      Data4: -338122172
+    Path: event:/Characters/Player/GunHit
+  takeDamage:
+    Guid:
+      Data1: -442384094
+      Data2: 1143953435
+      Data3: 1823187595
+      Data4: 2074071796
+    Path: event:/Characters/Player/TakeDamage
+  explosion:
+    Guid:
+      Data1: -1289773010
+      Data2: 1304119544
+      Data3: -434207834
+      Data4: -164424040
+    Path: event:/Characters/Player/Explosion
+  death:
+    Guid:
+      Data1: -1160888430
+      Data2: 1303553436
+      Data3: -1269942352
+      Data4: 1266731566
+    Path: event:/Characters/Player/Death
   jumpSound:
     Guid:
       Data1: -163572013
@@ -129,13 +167,13 @@ MonoBehaviour:
       Data3: 1341919372
       Data4: -1993185319
     Path: event:/Characters/Player/Movement/Dash
-  sword:
+  landingSound:
     Guid:
-      Data1: -942067676
-      Data2: 1244755253
-      Data3: -829924448
-      Data4: -888732502
-    Path: event:/Characters/Player/Combat/Sword
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   shooting:
     Guid:
       Data1: 1964992359
@@ -143,55 +181,75 @@ MonoBehaviour:
       Data3: -1054585723
       Data4: 1624293393
     Path: event:/Characters/Player/Combat/Shooting
-  takeDamage:
+  swordAttack:
     Guid:
-      Data1: -442384094
-      Data2: 1143953435
-      Data3: 1823187595
-      Data4: 2074071796
-    Path: event:/Characters/Player/TakeDamage
-  explosion:
+      Data1: -942067676
+      Data2: 1244755253
+      Data3: -829924448
+      Data4: -888732502
+    Path: event:/Characters/Player/Combat/Sword
+  shotgunAttack:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  death:
+      Data1: 113601871
+      Data2: 1141261830
+      Data3: 1165153712
+      Data4: 828423210
+    Path: event:/Weapons/Shotgun
+  minigunAttack:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  swordHit:
+      Data1: -1101523284
+      Data2: 1268678913
+      Data3: -1163894356
+      Data4: 432043297
+    Path: event:/Weapons/MachineGun
+  pickUp:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  gunHit:
+      Data1: -929770756
+      Data2: 1187482711
+      Data3: -767358529
+      Data4: 481057407
+    Path: event:/Characters/Player/Inventory/PickUp
+  fullOil:
     Guid:
-      Data1: -53650805
-      Data2: 1129154960
-      Data3: 1028364984
-      Data4: -338122172
-    Path: event:/Characters/Player/GunHit
+      Data1: 109803052
+      Data2: 1285394202
+      Data3: 1066939266
+      Data4: -1904716957
+    Path: event:/Characters/Player/Inventory/FullOil
+  foundModule:
+    Guid:
+      Data1: -1836149406
+      Data2: 1125656962
+      Data3: 2007932546
+      Data4: -351504194
+    Path: event:/Characters/Player/Inventory/FoundModule
   movingSound:
-    Guid:
-      Data1: -1544703322
-      Data2: 1243344675
-      Data3: 88062883
-      Data4: 1250406548
-    Path: event:/Characters/Player/Movement/Moving
+    _eventReference:
+      Guid:
+        Data1: -1544703322
+        Data2: 1243344675
+        Data3: 88062883
+        Data4: 1250406548
+      Path: event:/Characters/Player/Movement/Moving
+    _attachTransform: {fileID: 0}
   shieldSound:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+    _eventReference:
+      Guid:
+        Data1: 1012448806
+        Data2: 1102008287
+        Data3: -2037447003
+        Data4: 1341653319
+      Path: event:/Characters/Player/Shield
+    _attachTransform: {fileID: 0}
+  minigun:
+    _eventReference:
+      Guid:
+        Data1: -1101523284
+        Data2: 1268678913
+        Data3: -1163894356
+        Data4: 432043297
+      Path: event:/Weapons/MachineGun
+    _attachTransform: {fileID: 0}
 --- !u!1 &6705291901641519162
 GameObject:
   m_ObjectHideFlags: 0

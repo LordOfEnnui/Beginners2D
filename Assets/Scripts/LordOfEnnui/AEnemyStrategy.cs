@@ -57,4 +57,8 @@ public abstract class AEnemyStrategy : ACharacterStrategy {
 
     public override void OnFire() {
     }
+
+    public override Vector3 TargetLocation() {
+        return target.transform.position;
+    }
 }

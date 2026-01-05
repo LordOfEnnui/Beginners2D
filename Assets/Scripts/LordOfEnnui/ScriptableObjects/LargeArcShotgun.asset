@@ -23,4 +23,4 @@ MonoBehaviour:
   streamSpacing: 12
   numberOfStreams: 10
   startUpDuration: 0
-  moveSpeedMultiplier: 0.5
+  moveSpeedMultiplier: 0.155

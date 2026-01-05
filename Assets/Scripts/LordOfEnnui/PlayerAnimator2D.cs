@@ -1,3 +1,5 @@
+using DG.Tweening;
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
@@ -7,10 +9,17 @@ public class PlayerAnimator2D : MonoBehaviour
     Animator animator;
 
     [SerializeField]
+    SpriteRenderer spriteRenderer;
+
+    [SerializeField]
     PlayerInputStrategy strat;
 
     [SerializeField]
     int verticalFieldDegrees = 90;
+
+    [Header("AfterImage")]
+    [SerializeField]
+    SpriteRenderer afterImage;
 
     [Header("Particles")]
     [SerializeField]
@@ -38,9 +47,11 @@ public class PlayerAnimator2D : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();    
+        spriteRenderer = GetComponent<SpriteRenderer>();
         strat = gameObject.GetComponentInParent<PlayerInputStrategy>();
         thrustRenderer = thrustParticles.gameObject.GetComponent<ParticleSystemRenderer>();
         sprintRenderer = sprintParticles.gameObject.GetComponent<ParticleSystemRenderer>();
+        StartCoroutine(AfterImage());
     }
 
     void FixedUpdate()
@@ -87,6 +98,25 @@ public class PlayerAnimator2D : MonoBehaviour
         animator.SetBool("isMoving", moving && (lookRight || lookLeft));
         animator.SetBool("isUpMoving", moving && lookUp);
         animator.SetBool("isDownMoving", moving && lookDown);
+    }
+
+    IEnumerator AfterImage() {
+        WaitForSeconds wait = new(0.01f);
+        while (true) {
+            if (strat.isSprinting) {
+                SpriteRenderer aImg = Instantiate(afterImage, transform.position, Quaternion.identity, transform);
+                aImg.transform.SetParent(null, true);
+                aImg.gameObject.SetActive(true);
+            
+                aImg.sprite = spriteRenderer.sprite;
+                //Vector3 scale = aImg.transform.localScale;
+                //scale.x *= Mathf.Sign(transform.localScale.x);
+                //aImg.transform.localScale = scale;
+
+                aImg.DOFade(0f, 0.4f).SetLink(aImg.gameObject).OnComplete(() => Destroy(aImg));
+            }
+            yield return wait;
+        }
     }
 
     void Flip() {

@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed10cdcd2b03ccf4cb08d2144fe10efd, type: 3}
-  m_Name: PlayerDefaultWeapon
+  m_Name: ShootParams
   m_EditorClassIdentifier: Assembly-CSharp::ShootParams
   fireRate: 3
-  bulletSpeed: 30
-  fireSpread: 0
+  bulletSpeed: 10
+  fireSpread: 10
   recoilForce: 5
-  placeDistance: 2.5
-  fireStreamType: 0
+  placeDistance: 0.5
+  fireStreamType: 1
   customFireStreams:
   - 0
-  streamSpacing: 30
-  numberOfStreams: 3
+  streamSpacing: 6.7
+  numberOfStreams: 14
   startUpDuration: 0
   moveSpeedMultiplier: 1
