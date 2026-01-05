@@ -211,6 +211,7 @@ public class StarNavigator {
     private void UpdateAvailableStars() {
         if (!_availableStars.IsEmpty()) {
             foreach (var star in _availableStars) {
+                if (star != _currentNavStar)
                 star.SetState(NavStarState.Locked);
             }
             _availableStars.Clear();

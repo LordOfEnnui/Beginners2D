@@ -35,11 +35,20 @@ public class NavStarView : MonoBehaviour, IView, IPointerDownHandler, IPointerEn
     [SerializeField] SpriteRenderer _renderer;
     [SerializeField] StarVisualTheme _theme;
 
+    [SerializeField] Transform mainBody;
+
     private NavStarState _currentState = NavStarState.Locked;
 
     private void Awake() {
         if (_renderer == null)
             _renderer = GetComponentInChildren<SpriteRenderer>();
+        if (mainBody == null) {
+            if (_renderer != null) {
+                mainBody = _renderer.transform;
+            } else {
+                mainBody = transform;
+            }
+        }
     }
 
     public void RenderState(NavStarState state) {
@@ -57,11 +66,11 @@ public class NavStarView : MonoBehaviour, IView, IPointerDownHandler, IPointerEn
     }
 
     public void OnPointerEnter(PointerEventData eventData) {
-        transform.DOScale(1.2f, 0.5f).SetEase(Ease.Flash);
+        mainBody.DOScale(1.2f, 0.5f).SetEase(Ease.Flash);
     }
 
     public void OnPointerExit(PointerEventData eventData) {
-        transform.DOScale(1.0f, 0.5f).SetEase(Ease.Flash);
+        mainBody.DOScale(1.0f, 0.5f).SetEase(Ease.Flash);
     }
 
     public void DrawConnectionTo(Vector3 targetPosition) {
@@ -87,7 +96,7 @@ public class NavStarView : MonoBehaviour, IView, IPointerDownHandler, IPointerEn
     }
 
     private void OnDestroy() {
-        transform.DOKill();
+        mainBody.DOKill();
     }
     public void ToggleSelected(bool isEnabled) {
         if (_renderer == null) return;
