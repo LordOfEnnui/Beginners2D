@@ -55,8 +55,6 @@ public class FmodAudioService : IAudioService {
         bus.setVolume(Mathf.Clamp01(normalizedVolume));
     }
 
-    
-
     public List<AudioChannelType> GetSupportedChannelsTypes() {
         return new List<AudioChannelType>(buses.Keys);
     }

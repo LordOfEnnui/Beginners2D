@@ -9,5 +9,6 @@ public class MainMenuState : State<GameManager> {
         _audioService.StartMusicPlaylist(MusicPlaylist.MainMenu);
     }
     public override void Exit() {
+        _audioService.StopCurrentMusic();
     }
 }

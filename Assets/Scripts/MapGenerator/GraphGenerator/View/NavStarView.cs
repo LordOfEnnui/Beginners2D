@@ -27,6 +27,12 @@ public class StarView : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     private bool _isSelected;
 
     private Tween _breathingTween;
+    private Vector3 originalScale = Vector3.zero;
+    [SerializeField] float _breathingMultiplier = 1.3f;
+
+    private void Awake() {
+        originalScale = _visualRoot.transform.localScale;
+    }
 
     public void Initialize(Star star, Action<Star> onClick) {
         _star = star;
@@ -41,7 +47,7 @@ public class StarView : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         Color color = _theme != null ? _theme.GetColor(state) : GetDefaultColor(state);
         _renderer.color = _isSelected ? color * 0.7f : color;
 
-        float targetScale = state == StarState.Current ? 1.3f : 1f;
+        float targetScale = state == StarState.Current ? originalScale.x * _breathingMultiplier : originalScale.x;
         _visualRoot.DOScale(targetScale, 0.3f).SetEase(Ease.OutBack);
 
         ToggleAvailableAnimation(state == StarState.Available);
@@ -60,8 +66,8 @@ public class StarView : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
             return;
         }
 
-        float baseScale = _star.State.Value == StarState.Current ? 1.3f : 1f;
-        float breathScale = baseScale * 1.1f;
+        float baseScale = _star.State.Value == StarState.Current ? originalScale.x * _breathingMultiplier : originalScale.x;
+        float breathScale = baseScale * originalScale.x * 1.1f;
         float breathDuration = 0.8f;
 
         _breathingTween = _visualRoot.DOScale(breathScale, breathDuration)

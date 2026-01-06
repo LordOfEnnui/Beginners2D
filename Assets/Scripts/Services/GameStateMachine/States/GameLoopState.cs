@@ -15,5 +15,3 @@ public class GameLoopState : State<GameManager> {
     public override void Exit() {
     }
 }
-
-

@@ -135,16 +135,13 @@ public class StarNavigationService : IStarNavigationService {
     public bool CanTravelTo(Star star) {
         if (star == null || star == _currentStar) return false;
 
-        // Перша зірка завжди доступна
         if (_currentStar == null) return true;
 
-        // Можна подорожувати тільки вперед по з'єднаним зіркам
         return star.Coord.Layer > _currentStar.Coord.Layer &&
                _currentStar.IsConnectedTo(star.Coord);
     }
 
     private void SetCurrentStar(Star star) {
-        // Оновлюємо стан попередньої зірки
         if (_currentStar != null) {
             _currentStar.State.Value = StarState.Visited;
         }

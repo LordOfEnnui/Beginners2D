@@ -1271,7 +1271,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3504703735483563159, guid: bab4d2576779dcd479694ace53ac6f71, type: 3}
       propertyPath: m_overflowMode
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3504703735483563159, guid: bab4d2576779dcd479694ace53ac6f71, type: 3}
       propertyPath: m_VerticalAlignment

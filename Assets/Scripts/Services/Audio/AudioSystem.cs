@@ -2,6 +2,7 @@ using Mono.Cecil;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.Rendering.STP;
 
 public class AudioSystem : IDataLoader, IDataSaveable {
     private readonly IAudioService _audioService;
@@ -43,7 +44,7 @@ public class AudioSystem : IDataLoader, IDataSaveable {
 }
 
 [Serializable]
-[DataSource(DataSourceType.PlayerPrefs, "star_names")]
+[DataSource(DataSourceType.PlayerPrefs, "audio_settings")]
 public class AudioSettings {
     public List<AudioChannel> channels = new();
 }
