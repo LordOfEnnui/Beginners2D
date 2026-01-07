@@ -4,7 +4,21 @@ using UnityEngine.Tilemaps;
 public class obstaclePlacer : MonoBehaviour
 {
     [SerializeField]
+    public int _playerSpawnX;
+    [SerializeField]
+    public int _playerSpawnY;
+
+    [SerializeField]
     public GameObject _obstacle;
+
+    [SerializeField]
+    public GameObject _obstacle2x2;
+
+    [SerializeField]
+    public GameObject _obstacle2x1;
+
+    [SerializeField]
+    public GameObject _obstacle1x2;
 
     [SerializeField]
     private Grid _tilegrid;
@@ -36,6 +50,13 @@ public class obstaclePlacer : MonoBehaviour
     [SerializeField]
     private Sprite _lavaObstacle;
 
+    [SerializeField]
+    private Sprite _lavaFlow;
+
+    [SerializeField]
+    private Sprite _storm;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -44,7 +65,7 @@ public class obstaclePlacer : MonoBehaviour
 
     bool CheckSpot(int obstacleDensity){
         //Obstacle density is value 1 to 20 (1% to 20% of grid space)
-        int obstacleChance = Random.Range(1,101);
+        int obstacleChance = Random.Range(1,201);
         if(obstacleChance<=obstacleDensity){
             return true;
         }
@@ -61,12 +82,40 @@ public class obstaclePlacer : MonoBehaviour
         int hiX = bounds.xMax;
         int hiY = bounds.yMax;
 
-        for(int i=lowX; i<hiX+1;i++){
-            for(int j=lowY; j<hiY+1;j++){
+        for(int j=lowY; j<hiY+1;j=j+2){
+            for(int i=lowX; i<hiX+1;i++){
                 bool hasObstacle = CheckSpot(obstacleDensity);
+                if(i==_playerSpawnX&j==_playerSpawnY){
+                    hasObstacle=false;
+                }
                 if(hasObstacle){
-                    //Create prefab
-                    GameObject obstacleInstance = Instantiate(_obstacle);
+                GameObject obstacleInstance;
+                switch(terrainOption){
+                    case "crater":
+                        obstacleInstance = Instantiate(_obstacle2x2);
+                        break;
+                    case "rock":
+                        obstacleInstance = Instantiate(_obstacle1x2);
+                        break;
+                    case "lava":
+                        obstacleInstance = Instantiate(_obstacle2x1);
+                        break;
+                    case "jungle":
+                        obstacleInstance = Instantiate(_obstacle1x2);
+                        break;
+                    case "island":
+                        obstacleInstance = Instantiate(_obstacle2x1);
+                        break;
+                    case "snow":
+                        obstacleInstance = Instantiate(_obstacle2x2);
+                        break;
+                    case "water":
+                        obstacleInstance = Instantiate(_obstacle2x1);
+                        break;
+                    default:
+                        obstacleInstance = Instantiate(_obstacle2x2);
+                        break;
+                }
 
                     //Set prefab location
                     obstacleInstance.transform.position=new Vector3(i,j,0);
@@ -86,7 +135,8 @@ public class obstaclePlacer : MonoBehaviour
                             spriteRending.sprite=_rockObstacle;
                             break;
                         case "lava":
-                            spriteRending.sprite=_lavaObstacle;
+                            spriteRending.sprite=_lavaFlow;
+                            // spriteRending.sprite=_lavaObstacle;
                             break;
                         case "jungle":
                             spriteRending.sprite=_jungleObstacle;
@@ -95,7 +145,8 @@ public class obstaclePlacer : MonoBehaviour
                             spriteRending.sprite=_islandObstacle;
                             break;
                         case "snow":
-                            spriteRending.sprite=_snowObstacle;
+                            spriteRending.sprite=_storm;
+                            // spriteRending.sprite=_snowObstacle;
                             break;
                         case "water":
                             spriteRending.sprite=_waterObstacle;
@@ -105,9 +156,11 @@ public class obstaclePlacer : MonoBehaviour
                             break;
                     }
                 }
+                
+                }
             }
         }
-    }
+    
 
     // Update is called once per frame
     void Update()

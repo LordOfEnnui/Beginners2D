@@ -289,8 +289,8 @@ public class TerrainPicker : MonoBehaviour
             }
         }
 
-        Debug.Log("Making Modules");
-        _modulePlacer.MakeModules(_modulesList,_borderSizeX,_borderSizeY);
+        // Debug.Log("Making Modules");
+        // _modulePlacer.MakeModules(_modulesList,_borderSizeX,_borderSizeY);
 
         Debug.Log("Making obstacles");
         _obstaclePlacer.MakeObstacles(_terrainLabel,_obstacleDensity);//set input to % of tiles having obstacles, 1-20
