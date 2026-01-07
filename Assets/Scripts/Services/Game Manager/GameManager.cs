@@ -69,5 +69,9 @@ public class GameManager : MonoBehaviour, IGameManager {
     private void OnDestroy() {
         _gameStateMachine.OnStateEnter -= HandleStateChanged;
     }
+
+    public void LoadStarExploration(Star selectedStar) {
+        Debug.Log("Request to load: " + selectedStar);
+    }
 }
 

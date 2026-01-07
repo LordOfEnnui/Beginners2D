@@ -1,6 +1,7 @@
 ﻿using ModestTree;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,12 +25,12 @@ public class StarMapVisualizer : MonoBehaviour {
     private readonly Dictionary<LayerCoord, StarView> _views = new();
     private readonly List<LineRenderer> _connections = new();
 
-    public StarView CreateStarView(Star star, int layerStarCount, Action<Star> onClick) {
+    public StarView CreateStarView(Star star, int layerStarCount) {
         Vector3 position = CalculatePosition(star.Coord, layerStarCount);
 
         var view = Instantiate(_starPrefab, position, Quaternion.identity, _container);
         view.gameObject.name = $"Star_{star.Coord}";
-        view.Initialize(star, onClick);
+        view.Initialize(star);
 
         _views[star.Coord] = view;
         return view;
@@ -82,23 +83,29 @@ public class StarMapVisualizer : MonoBehaviour {
         obj.transform.SetParent(_container, false);
         return obj.AddComponent<LineRenderer>();
     }
+
+    public List<StarView> GetAllViews() {
+        return _views.Values.ToList();
+    }
 }
 
 public interface IStarNavigationService {
     Star CurrentStar { get; }
     Star SelectedStar { get; }
 
-    void Initialize(LayerCoord startCoord);
+    void SetCurrentPosition(LayerCoord startCoord);
     void SelectStar(Star star);
     bool TryTravelTo(Star star);
     bool CanTravelTo(Star star);
+    void UpdateMap(StarMap starMap);
 
     event Action<Star> OnCurrentStarChanged;
     event Action<Star> OnStarSelected;
+    event Action<StarMap> OnMapUpdated;
 }
 
 public class StarNavigationService : IStarNavigationService {
-    private readonly StarMap _starMap;
+    private StarMap _starMap;
     private Star _currentStar;
     private Star _selectedStar;
 
@@ -107,12 +114,20 @@ public class StarNavigationService : IStarNavigationService {
 
     public event Action<Star> OnCurrentStarChanged;
     public event Action<Star> OnStarSelected;
+    public event Action<StarMap> OnMapUpdated;
 
     public StarNavigationService(StarMap starMap) {
         _starMap = starMap ?? throw new ArgumentNullException(nameof(starMap));
     }
+    public StarNavigationService() {
+    }
 
-    public void Initialize(LayerCoord startCoord) {
+    public void UpdateMap(StarMap newMap) {
+        _starMap = newMap;
+        OnMapUpdated?.Invoke(newMap);
+    }
+
+    public void SetCurrentPosition(LayerCoord startCoord) {
         if (_starMap.TryGetStar(startCoord, out var startStar)) {
             SetCurrentStar(startStar);
         }
@@ -154,19 +169,19 @@ public class StarNavigationService : IStarNavigationService {
     }
 
     private void UpdateAvailableStars() {
-        // Спочатку блокуємо всі доступні зірки
         foreach (var star in _starMap.Stars.Values) {
             if (star.State.Value == StarState.Available) {
                 star.State.Value = StarState.Locked;
             }
         }
 
-        // Потім розблоковуємо наступні з'єднані зірки
         foreach (var coord in _currentStar.GetForwardConnections()) {
             if (_starMap.TryGetStar(coord, out var nextStar)) {
                 nextStar.State.Value = StarState.Available;
             }
         }
     }
+
+    
 }
 

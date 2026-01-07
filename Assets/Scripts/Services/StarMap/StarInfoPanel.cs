@@ -6,7 +6,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-
 public class StarInfoPanel : UIPanel {
     [SerializeField] private TextMeshProUGUI _coordText;
     [SerializeField] private TextMeshProUGUI _infoText;
@@ -24,7 +23,6 @@ public class StarInfoPanel : UIPanel {
         if (_infoText != null) {
             _infoText.text = $"{star.Name}";
         }
-
         if (_coordText != null) {
             _coordText.text = $"Star {star.Coord}";
         }
@@ -34,9 +32,11 @@ public class StarInfoPanel : UIPanel {
         if (_travelButton != null) {
             _travelButton.interactable = available;
         }
+    }
 
+    public void SetTravelButtonText(string text) {
         if (_travelButtonText != null) {
-            _travelButtonText.text = available ? "Travel" : "Can't Travel";
+            _travelButtonText.text = text;
         }
     }
 

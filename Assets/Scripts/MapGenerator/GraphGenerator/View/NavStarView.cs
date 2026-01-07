@@ -23,7 +23,7 @@ public class StarView : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     [SerializeField] private StarVisualTheme _theme;
 
     private Star _star;
-    private Action<Star> _onClickCallback;
+    public Action<Star> OnStarClicked;
     private bool _isSelected;
 
     private Tween _breathingTween;
@@ -34,9 +34,8 @@ public class StarView : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         originalScale = _visualRoot.transform.localScale;
     }
 
-    public void Initialize(Star star, Action<Star> onClick) {
+    public void Initialize(Star star) {
         _star = star;
-        _onClickCallback = onClick;
 
         _label.text = star.Coord.ToString();
         star.State.OnChanged += HandleStateChanged;
@@ -84,7 +83,7 @@ public class StarView : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     };
 
     public void OnPointerClick(PointerEventData eventData) =>
-        _onClickCallback?.Invoke(_star);
+        OnStarClicked?.Invoke(_star);
 
     public void OnPointerEnter(PointerEventData eventData) {
         _breathingTween?.Pause();
