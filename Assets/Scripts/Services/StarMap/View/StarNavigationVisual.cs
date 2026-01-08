@@ -2,7 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StarMapVisualizer : MonoBehaviour {
     [Header("Prefabs")]
@@ -83,6 +85,24 @@ public class StarMapVisualizer : MonoBehaviour {
 
     public List<StarView> GetAllViews() {
         return _views.Values.ToList();
+    }
+
+    private StarView selectedView;
+
+    public void SelectStar(LayerCoord coord) {
+        ClearSelection();
+
+        if (TryGetView(coord, out StarView view)) {
+            selectedView = view;
+
+            view.SetSelected(true);
+        }
+    }
+
+    public void ClearSelection() {
+        if (selectedView != null) {
+            selectedView.SetSelected(false);
+        }
     }
 }
 

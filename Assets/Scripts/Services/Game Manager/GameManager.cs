@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour, IGameManager {
     }
 
     public void ContinueGame() {
-        _gameStateMachine.ChangeState<LoadingLevelState>();
+        _gameStateMachine.ChangeState<LoadingMapState>();
     }
 
     #region Pause/Resume
@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour, IGameManager {
 
     public void LoadStarExploration(Star selectedStar) {
         Debug.Log("Request to load: " + selectedStar);
-        _gameStateMachine.ChangeState<LoadingTerrainState>();
+        _gameStateMachine.ChangeState<LoadingLevelState>();
     }
 
     public void LoadMapScene() {
