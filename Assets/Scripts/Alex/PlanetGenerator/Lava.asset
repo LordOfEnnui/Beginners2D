@@ -24,3 +24,4 @@ MonoBehaviour:
   enemyPrefabs: []
   movementSpeedMultiplier: 1
   parallaxPrefab: {fileID: 0}
+  planetSprite: {fileID: 21300000, guid: 7e06f618aaff530418b64777fe405740, type: 3}

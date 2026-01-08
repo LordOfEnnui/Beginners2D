@@ -12,5 +12,6 @@ public class BiomeData : ScriptableObject {
 
     public float movementSpeedMultiplier = 1f;
     public GameObject parallaxPrefab;
+    public Sprite planetSprite;
 }
 

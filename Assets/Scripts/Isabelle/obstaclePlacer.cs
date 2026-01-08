@@ -76,14 +76,14 @@ public class obstaclePlacer : MonoBehaviour
     }
 
 
-    public void MakeObstacles(string terrainOption,int obstacleDensity){
+    public void MakeObstacles(string terrainOption,int obstacleDensity, int _borderSizeX, int _borderSizeY){
         BoundsInt bounds = _tilemap.cellBounds;
         int width = bounds.size.x;
         int height = bounds.size.y;
-        int lowX = bounds.xMin;
-        int lowY = bounds.yMin;
-        int hiX = bounds.xMax;
-        int hiY = bounds.yMax;
+        int lowX = bounds.xMin+_borderSizeX;
+        int lowY = bounds.yMin+_borderSizeY;
+        int hiX = bounds.xMax-_borderSizeX;
+        int hiY = bounds.yMax-_borderSizeY;
 
         for(int j=lowY; j<hiY+1;j=j+2){
             for(int i=lowX; i<hiX+1;i++){
@@ -149,8 +149,8 @@ public class obstaclePlacer : MonoBehaviour
                             spriteRending.sprite=_islandObstacle;
                             break;
                         case "snow":
-                            spriteRending.sprite=_storm;
-                            // spriteRending.sprite=_snowObstacle;
+                            // spriteRending.sprite=_storm;
+                            spriteRending.sprite=_snowObstacle;
                             break;
                         case "water":
                             spriteRending.sprite=_waterObstacle;

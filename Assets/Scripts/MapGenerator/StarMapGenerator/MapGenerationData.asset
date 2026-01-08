@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StarMapGenerationConfig
   instanceName: StarMapGenerationConfig
   graphConfig: {fileID: 11400000, guid: b4a0e4a8ddcccdb47b6aed7ac22214a0, type: 2}
+  planetsData: {fileID: 11400000, guid: da80ba043da71fc4786575ff13147ce3, type: 2}

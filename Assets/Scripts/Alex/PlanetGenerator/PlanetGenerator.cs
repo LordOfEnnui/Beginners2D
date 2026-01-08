@@ -89,5 +89,5 @@ public class PlanetConfig {
     public float enemyDensity = 0.03f;
 
     public List<string> modulesList = new();
-
+    public Sprite planetSprite;
 }

@@ -4,4 +4,5 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "MapGenerationData", menuName = "StarMap/MapGenerationData")]
 public class StarMapGenerationConfig : GenericInstanсeConfig<StarMapGenerator> {
     public GraphGenerationConfig graphConfig;
+    public PlanetsData planetsData;
 }
