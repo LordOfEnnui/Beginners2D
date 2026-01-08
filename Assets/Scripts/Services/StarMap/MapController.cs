@@ -238,7 +238,11 @@ public class StarMapPresenter : IDisposable {
         if (_spaceship == null || !_visualizer.TryGetView(star.Coord, out var view))
             return;
 
-        _spaceship.SetTarget(view.transform.position, () => _spaceship.StartOrbit());
+        _spaceship.SetTarget(view.transform.position, OnpaceShipReachTarget);
+    }
+
+    private void OnpaceShipReachTarget() {
+        _spaceship.StartOrbit();
     }
 
     private void UnsubscribeViews() {
@@ -268,21 +272,11 @@ public class SelectionPresenter : IDisposable {
     }
 
     private void HandleStarSelected(Star star) {
-        UpdateSelectionVisuals(star);
-    }
-
-    private void UpdateSelectionVisuals(Star star) {
-        if (star == null) return;
-
-        if (_navigation.SelectedStar != null && star != _navigation.SelectedStar) {
-            if (_visualizer.TryGetView(_navigation.SelectedStar.Coord, out var oldView)) {
-                oldView.SetSelected(false);
-            }
+        if (star == null) {
+            _visualizer.ClearSelection();
+            return;
         }
-
-        if (_visualizer.TryGetView(star.Coord, out var newView)) {
-            newView.SetSelected(true);
-        }
+        _visualizer.SelectStar(star.Coord);
     }
 
     public void Dispose() {

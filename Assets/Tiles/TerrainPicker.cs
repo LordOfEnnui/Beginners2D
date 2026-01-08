@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
@@ -353,8 +354,11 @@ public class TerrainPicker : MonoBehaviour
             }
         }
 
-        Debug.Log("Making Modules");
-        _modulePlacer.MakeModules(_modulesList,_borderSizeX,_borderSizeY,moduleCount);
+        if (_modulePlacer != null) {
+            Debug.Log("Making Modules");
+            _modulePlacer.MakeModules(_modulesList, _borderSizeX, _borderSizeY, moduleCount);
+        }
+        
 
         Debug.Log("Making Platform");
         _modulePlacer.MakePlatform(_borderSizeX,_borderSizeY);
@@ -362,13 +366,13 @@ public class TerrainPicker : MonoBehaviour
         Debug.Log("Making Oil");
         _oilPlacer.MakeOil(_borderSizeX,_borderSizeY,oilCount);
 
-        Debug.Log("Making obstacles");
-        // _obstaclePlacer.MakeObstacles(_terrainLabel,_obstacleDensity);//set input to % of tiles having obstacles, 1-20
-        _obstaclePlacer.MakeObstacles(_terrainLabel,obsDensity,_borderSizeX,_borderSizeY);//set input to % of tiles having obstacles, 1-20
         
-        Debug.Log("Making Enemies"); 
-        // _enemyPlacer.MakeEnemies(_spawnRate,_borderSizeX,_borderSizeY);//set input to spawn rate (avg # of enemies to spawn in a 20x20 grid)
-        _enemyPlacer.MakeEnemies(enemyRate,_borderSizeX,_borderSizeY,enemyList);//set input to spawn rate (avg # of enemies to spawn in a 20x20 grid)
+        if (_enemyPlacer!= null) {
+            Debug.Log("Making Enemies");
+            // _enemyPlacer.MakeEnemies(_spawnRate,_borderSizeX,_borderSizeY);//set input to spawn rate (avg # of enemies to spawn in a 20x20 grid)
+            _enemyPlacer.MakeEnemies(enemyRate, _borderSizeX, _borderSizeY, enemyList);//set input to spawn rate (avg # of enemies to spawn in a 20x20 grid)
+        }
+        
 
     }
 
