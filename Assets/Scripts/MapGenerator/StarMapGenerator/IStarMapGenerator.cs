@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine.Audio;
 
 public interface IStarMapGenerator {
@@ -24,7 +25,7 @@ public class StarMapGenerator : IStarMapGenerator, IDataLoader {
 
     public StarMap GenerateNewMap(StarMapGenerationConfig _config) {
         StarMap starMap = CreateFromGraph(_config);
-        PopulatePlanetData(starMap);
+        PopulatePlanetData(starMap, _config);
         return starMap;
     }
 
@@ -53,14 +54,22 @@ public class StarMapGenerator : IStarMapGenerator, IDataLoader {
         return map;
     }
 
-    private void PopulatePlanetData(StarMap starMap) {
+    private void PopulatePlanetData(StarMap starMap, StarMapGenerationConfig config) {
         int seed = starMap.Seed.GetHashCode();
         Random random = new Random(seed);
 
+        PlanetsData planetsData = config.planetsData;
+        List<BiomeData> biomes = planetsData.biomes;
+
         foreach (Star star in starMap.Stars.Values) {
+            int biomeIndex = random.Next(0, biomes.Count);
+            BiomeData biomeData = biomes[biomeIndex];
+
             PlanetConfig planetConfig = new PlanetConfig();
             planetConfig.seed = seed;
-            planetConfig.BiomeLabel = "desert";
+
+            planetConfig.BiomeLabel = biomeData.biomeLabel;
+            planetConfig.planetSprite = biomeData.planetSprite;
 
             star.SetPlanetData(planetConfig);
         }

@@ -27,8 +27,10 @@ public class GameManager : MonoBehaviour, IGameManager {
     }
     public void StartNewGame() {
         Debug.Log("Game Started!");
-        _levelProgress.SetProgress(new PlayerProgressData { CurrentLevel = 1 });
-        _gameStateMachine.ChangeState<LoadingLevelState>();
+        PlayerProgressData playerProgressData = new PlayerProgressData { CurrentLevel = 1 };
+        _levelProgress.SetProgress(playerProgressData);
+        //_gameStateMachine.ChangeState<LoadingLevelState>();
+        _gameStateMachine.ChangeState<LoadingMapState>();
     }
 
     public void ContinueGame() {

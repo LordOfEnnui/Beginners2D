@@ -35,9 +35,19 @@ public class StarView : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     public void Initialize(Star star) {
         _star = star;
 
-        _label.text = star.Coord.ToString();
+        _label.text = star.ToString();
         star.State.OnChanged += HandleStateChanged;
         HandleStateChanged(star.State.Value);
+
+        Sprite planetSprite = _star.PlanetConfig.planetSprite;
+        UpdateSprite(planetSprite);
+    }
+
+    public void UpdateSprite(Sprite newSprite) {
+        if (_renderer == null || newSprite == null) return;
+
+        _renderer.sprite = newSprite;
+
     }
 
     private void HandleStateChanged(StarState state) {

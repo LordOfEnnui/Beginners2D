@@ -17,28 +17,38 @@ public class StarMapController : MonoBehaviour {
     [Header("Generation")]
     [SerializeField] private StarMapGenerationConfig _generationConfig;
 
-    [Inject] private IStarMapGenerator _generation;
-    [Inject] private IGameManager _gameManager; 
+    [Inject] private IGameManager _gameManager;
 
+    [Inject] private IStarMapGenerator _generation;
     [Inject] private IStarNavigationService _navigation;
+    [Inject] private ILevelProgressService _levelProgress;
+
     private List<IDisposable> _presenters = new();
 
     private void Start() {
         InitializePresenters();
-        UpdateNavigation();
+        InitializeMap();
         BindUI();
     }
 
-    private void UpdateNavigation() {
-        if (_navigation.HasEmptyMap) {
-            StarMap starMap = _generation.GenerateNewMap(_generationConfig);
-            _navigation.UpdateMap(starMap);
+    private void InitializeMap() {
+        PlayerProgressData progress = _levelProgress.GetProgress();
 
-            LayerCoord beginningCoords = starMap.GetBeginningCoords();
-            _navigation.SetCurrentPosition(beginningCoords);
-        } else {
+        if (progress.IsNewGame) {
+            CreateNewMap();
+            progress.IsNewGame = false;
+            _levelProgress.SetProgress(progress);
+        } else if (!_navigation.HasEmptyMap) {
             _navigation.RefreshMap();
+        } else {
+            CreateNewMap();
         }
+    }
+
+    private void CreateNewMap() {
+        StarMap starMap = _generation.GenerateNewMap(_generationConfig);
+        _navigation.SetNewMap(starMap);
+
     }
 
     private void InitializePresenters() {
@@ -48,12 +58,12 @@ public class StarMapController : MonoBehaviour {
     }
 
     private void BindUI() {
-        _generateButton?.onClick.AddListener(UpdateNavigation);
+        _generateButton?.onClick.AddListener(CreateNewMap);
     }
 
     
     private void OnDestroy() {
-        _generateButton?.onClick.RemoveListener(UpdateNavigation);
+        _generateButton?.onClick.RemoveListener(CreateNewMap);
 
         foreach (var presenter in _presenters) {
             presenter?.Dispose();
@@ -81,7 +91,7 @@ public class NavigationPresenter : IDisposable {
     private void SubscribeToEvents() {
         _navigation.OnStarSelected += HandleStarSelected;
         _navigation.OnCurrentStarChanged += HandleCurrentStarChanged;
-        _navigation.OnMapUpdated += HandleMapUpdate;
+        _navigation.OnNewMapSet += HandleMapUpdate;
         _infoPanel.OnTravelRequested += HandleTravelRequest;
     }
 
@@ -156,7 +166,7 @@ public class NavigationPresenter : IDisposable {
     public void Dispose() {
         _navigation.OnStarSelected -= HandleStarSelected;
         _navigation.OnCurrentStarChanged -= HandleCurrentStarChanged;
-        _navigation.OnMapUpdated -= HandleMapUpdate;
+        _navigation.OnNewMapSet -= HandleMapUpdate;
         _infoPanel.OnTravelRequested -= HandleTravelRequest;
     }
 }
@@ -171,26 +181,30 @@ public class StarMapPresenter : IDisposable {
         _visualizer = visualizer;
         _spaceship = spaceship;
 
-        _navigation.OnMapUpdated += RebuildMapVisuals;
+        _navigation.OnNewMapSet += RebuildMapVisuals;
         _navigation.OnCurrentStarChanged += HandleStarChanged;
 
-        HandleStarChanged(_navigation.CurrentStar);
+        UpdateSpaceShipInitialPos();
     }
 
     private void RebuildMapVisuals(StarMap map) {
         CleanCurrentVisuals();
         BuildVisualization(map);
+        UpdateSpaceShipInitialPos();
+    }
 
+    private void UpdateSpaceShipInitialPos() {
         Star currentStar = _navigation.CurrentStar;
         if (currentStar == null) return;
         if (_visualizer.TryGetView(currentStar.Coord, out var view)) {
             Vector3 gloablPosition = view.transform.position;
             _spaceship.transform.position = gloablPosition;
         }
-        
     }
 
     private void BuildVisualization(StarMap map) {
+        if (map == null) return;
+
         foreach (var layer in map.GetLayers()) {
             var stars = map.GetStarsInLayer(layer);
             foreach (var star in stars) {
@@ -235,7 +249,7 @@ public class StarMapPresenter : IDisposable {
     }
 
     public void Dispose() {
-        _navigation.OnMapUpdated -= RebuildMapVisuals;
+        _navigation.OnNewMapSet -= RebuildMapVisuals;
         CleanCurrentVisuals();
         _navigation.OnCurrentStarChanged -= HandleStarChanged;
     }

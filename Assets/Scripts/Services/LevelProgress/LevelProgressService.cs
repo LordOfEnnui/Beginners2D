@@ -37,5 +37,7 @@ public class LevelProgressService : ILevelProgressService, IDataLoader, IDataSav
 public class PlayerProgressData {
     public int CurrentLevel;
     public int HighestLevelUnlocked;
+
+    public bool IsNewGame = true;
 }
 

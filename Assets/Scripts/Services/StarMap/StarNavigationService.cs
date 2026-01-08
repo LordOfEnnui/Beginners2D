@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine.UI;
 
 public interface IStarNavigationService {
     Star CurrentStar { get; }
@@ -9,12 +10,13 @@ public interface IStarNavigationService {
     void SelectStar(Star star);
     bool TryTravelTo(Star star);
     bool CanTravelTo(Star star);
-    void UpdateMap(StarMap starMap);
+    void SetNewMap(StarMap starMap);
     void RefreshMap();
+    void ClearMap();
 
     event Action<Star> OnCurrentStarChanged;
     event Action<Star> OnStarSelected;
-    event Action<StarMap> OnMapUpdated;
+    event Action<StarMap> OnNewMapSet;
 }
 
 public class StarNavigationService : IStarNavigationService {
@@ -28,7 +30,7 @@ public class StarNavigationService : IStarNavigationService {
 
     public event Action<Star> OnCurrentStarChanged;
     public event Action<Star> OnStarSelected;
-    public event Action<StarMap> OnMapUpdated;
+    public event Action<StarMap> OnNewMapSet;
 
     public StarNavigationService(StarMap starMap) {
         _starMap = starMap ?? throw new ArgumentNullException(nameof(starMap));
@@ -36,9 +38,13 @@ public class StarNavigationService : IStarNavigationService {
     public StarNavigationService() {
     }
 
-    public void UpdateMap(StarMap newMap) {
+    public void SetNewMap(StarMap newMap) {
         _starMap = newMap;
-        OnMapUpdated?.Invoke(newMap);
+
+        LayerCoord beginningCoords = _starMap.GetBeginningCoords();
+        SetCurrentPosition(beginningCoords);
+
+        OnNewMapSet?.Invoke(newMap);
     }
 
     public void SetCurrentPosition(LayerCoord startCoord) {
@@ -100,7 +106,12 @@ public class StarNavigationService : IStarNavigationService {
     }
 
     public void RefreshMap() {
-        OnMapUpdated?.Invoke(_starMap);
+        OnNewMapSet?.Invoke(_starMap);
+    }
+
+    public void ClearMap() {
+        _starMap = null;
+        OnNewMapSet?.Invoke(_starMap);
     }
 }
 
