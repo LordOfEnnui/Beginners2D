@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
 using static UnityEngine.Rendering.STP;
 
@@ -8,6 +9,9 @@ using static UnityEngine.Rendering.STP;
 public class PlanetsData : ScriptableObject {
     [Header("Biomes")]
     public List<BiomeData> biomes;
+
+    [Range(min: 0.5f, max: 1.5f)]
+    public float minPlanetVolumeNormalized = 0.2f;
 
     [Range (min: 10, max: 100)]
     public int defaultPlanetVolume = 20;
@@ -25,4 +29,6 @@ public class PlanetsData : ScriptableObject {
     }
 
     public List<InstanñeConfig> pipelineStages = new();
+
+   
 }

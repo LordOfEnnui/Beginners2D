@@ -21,7 +21,7 @@ public interface IGenericInstanceConfig<out T> : IInstanceConfig where T : class
 
 }
 
-public class GenericInstanсeConfig<TContext> : InstanсeConfig, IGenericInstanceConfig<TContext>
+public class GenericInstanceConfig<TContext> : InstanсeConfig, IGenericInstanceConfig<TContext>
     where TContext : class {
     public override Type RuntimeType => typeof(TContext);
 }
