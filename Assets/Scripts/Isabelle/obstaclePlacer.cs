@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
+// using System;
 
 public class obstaclePlacer : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public class obstaclePlacer : MonoBehaviour
     public int _playerSpawnX;
     [SerializeField]
     public int _playerSpawnY;
+    [SerializeField]
+    public int _noSpawnRadius=2;
 
     [SerializeField]
     public GameObject _obstacle;
@@ -85,7 +88,8 @@ public class obstaclePlacer : MonoBehaviour
         for(int j=lowY; j<hiY+1;j=j+2){
             for(int i=lowX; i<hiX+1;i++){
                 bool hasObstacle = CheckSpot(obstacleDensity);
-                if(i==_playerSpawnX&j==_playerSpawnY){
+                if(Mathf.Abs(i)<_noSpawnRadius&Mathf.Abs(j)<_noSpawnRadius){
+                // if(i==_playerSpawnX&j==_playerSpawnY){
                     hasObstacle=false;
                 }
                 if(hasObstacle){
