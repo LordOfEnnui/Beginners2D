@@ -18,4 +18,6 @@ MonoBehaviour:
   oilCount: 6
   moduleCount: 3
   enemyList:
-  - {fileID: 2499486110265015892, guid: 4e3acc79275eab84e97d4d7ecad9ca52, type: 3}
+  - {fileID: 6461610804829731649, guid: d0de65bf6fb43cb4080561eb9e11eec0, type: 3}
+  - {fileID: 837322058370255082, guid: 1c467143d5bcca64cb21295de1aaa305, type: 3}
+  - {fileID: 3071705402937693600, guid: c89e21f0097c9274d922dda836202c15, type: 3}

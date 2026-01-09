@@ -8,6 +8,9 @@ public class modulePlacer : MonoBehaviour
     public GameObject _module;
 
     [SerializeField]
+    public GameObject _platform;
+
+    [SerializeField]
     private Grid _tilegrid;
 
     [SerializeField]
@@ -52,14 +55,36 @@ public class modulePlacer : MonoBehaviour
         //Once all objects have been placed, we stop placing them.
 
         //Give each spot a small chance of spawning. If not enough spawns, place function will just cycle back through
-        int moduleChance = Random.Range(1,301); 
+        int moduleChance = Random.Range(1,1801); 
         if(moduleChance<=1){
             Debug.Log("Placed a module");
             return true;
         }
-        return false;
+        return false; 
     }
 
+    public void MakePlatform(int _borderSizeX,int _borderSizeY){
+
+        BoundsInt bounds = _tilemap.cellBounds;
+        int width = bounds.size.x;
+        int height = bounds.size.y;
+        int lowX = bounds.xMin+_borderSizeX;
+        int lowY = bounds.yMin+_borderSizeY;
+        int hiX = bounds.xMax-_borderSizeX;
+        int hiY = bounds.yMax-_borderSizeY;
+        int modulesPlaced = 0;
+
+        int pickX = Random.Range(lowX,hiX);
+        int pickY = Random.Range(lowY,hiY);
+
+        Debug.Log("Placing module at "+pickX+","+pickY);
+
+        GameObject platformInstance = Instantiate(_platform);
+        platformInstance.transform.position=new Vector3(pickX,pickY,0);
+
+        Debug.Log("Platform placed");
+
+    }
 
     public void MakeModules(List<string> moduleOptions, int _borderSizeX, int _borderSizeY, int moduleCount){
         BoundsInt bounds = _tilemap.cellBounds;

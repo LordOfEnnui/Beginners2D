@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour, IGameManager {
         _gameStateMachine.ChangeState<BootstrapState>();
     }
 
+    public ILevelProgressService GetLevelProgress() { return _levelProgress; }
+
     private void HandleStateChanged(IState state) {
         Debug.Log($"State changed to : {state}");
     }
@@ -84,6 +86,8 @@ public class GameManager : MonoBehaviour, IGameManager {
 
     public void FinishGame() {
         Debug.Log("Request to finish game");
+        _gameStateMachine.ChangeState<LoadingMainMenuState>();
+        _levelProgress.SetPlayerState(null);
     }
 }
 
