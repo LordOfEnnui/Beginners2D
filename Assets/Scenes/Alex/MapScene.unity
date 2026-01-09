@@ -167,10 +167,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6231397198111873271, guid: a231a29c930eef647b5d6ac0cf0ee89e, type: 3}
-      propertyPath: orthographic size
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 8363870935365649865, guid: a231a29c930eef647b5d6ac0cf0ee89e, type: 3}
       propertyPath: m_Name
       value: Main Camera
@@ -469,7 +465,6 @@ MonoBehaviour:
   _container: {fileID: 1969847263}
   _layerSpacing: 2.5
   _starSpacing: 1.2
-  _lineMaterial: {fileID: 2100000, guid: 3410314087c1fb74f909edb69c771a63, type: 2}
   _lineWidth: 0.08
   _lineColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &526627200
@@ -738,7 +733,7 @@ MonoBehaviour:
     CustomLookAtTarget: 0
   Lens:
     FieldOfView: 60
-    OrthographicSize: 5
+    OrthographicSize: 2.5
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0

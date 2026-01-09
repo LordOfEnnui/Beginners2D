@@ -16,5 +16,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 109b4eb7418c44a4b85294eb124e0ed6, type: 2}
   - {fileID: 11400000, guid: 97f6d8a9941065d408cd96e27e251a17, type: 2}
   - {fileID: 11400000, guid: c0099adfd647893419731444e219906c, type: 2}
+  minPlanetVolumeNormalized: 0.5
+  defaultPlanetVolume: 20
   pipelineStages:
   - {fileID: 11400000, guid: 33ca432f6c3374b40a346e51a04711fa, type: 2}

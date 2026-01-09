@@ -1,20 +1,10 @@
 ﻿using DG.Tweening;
 using System;
-using System.Net.Sockets;
+using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
-using Zenject;
-
-public enum StarState {
-    Locked,
-    Available,
-    Visited,
-    Current,
-    Selected
-}
 
 public class StarView : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler {
     [Header("References")]
@@ -26,15 +16,18 @@ public class StarView : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     [Header("Animation Settings")]
     [SerializeField] private float _breathingScaleMultiplier = 1.3f;
     [SerializeField] private float _hoverScaleMultiplier = 1.15f;
-    [SerializeField] private float _stateTransitionDuration = 0.3f;
-    [SerializeField] private float _hoverTransitionDuration = 0.2f;
     [SerializeField] private float _breathingDuration = 0.8f;
+    [SerializeField] private float _hoverTransitionDuration = 0.2f;
 
     private Star _star;
     public Action<Star> OnStarClicked;
-    private bool _isSelected;
 
     private Vector3 _baseScale = Vector3.one;
+    private Tween _breathingTween;
+    private Tween _hoverTween;
+
+    // Словник для зберігання ліній (але не для керування їх кольором)
+    private Dictionary<LayerCoord, LineRenderer> _connectionLines = new();
 
     private void Awake() {
         if (_visualRoot != null) {
@@ -51,21 +44,38 @@ public class StarView : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         _star = star;
         _label.text = star.ToString();
 
-        if (_star != null) {
-            _star.State.OnChanged -= HandleStateChanged;
+        ApplyPlanetConfig(star.PlanetConfig);
+        SubscribeToStarEvents();
+        UpdateVisualState();
+    }
+
+    private void SubscribeToStarEvents() {
+        _star.IsAvailable.OnChanged += OnAvailabilityChanged;
+        _star.IsSelected.OnChanged += OnSelectionChanged;
+        _star.IsCurrent.OnChanged += OnCurrentChanged;
+    }
+
+    private void UnsubscribeFromStarEvents() {
+        if (_star == null) return;
+
+        _star.IsAvailable.OnChanged -= OnAvailabilityChanged;
+        _star.IsSelected.OnChanged -= OnSelectionChanged;
+        _star.IsCurrent.OnChanged -= OnCurrentChanged;
+    }
+
+    private void ApplyPlanetConfig(PlanetConfig config) {
+        if (config == null) return;
+
+        if (config.planetSprite != null) {
+            UpdateSprite(config.planetSprite);
         }
 
-        star.State.OnChanged += HandleStateChanged;
-        HandleStateChanged(star.State.Value);
-
-        PlanetConfig planetConfig = star.PlanetConfig;
-        if (planetConfig != null) {
-            if (planetConfig.planetSprite != null) {
-                UpdateSprite(planetConfig.planetSprite);
-            }
-            Vector3 targetScale = new Vector3(planetConfig.normalizedVolume, planetConfig.normalizedVolume, planetConfig.normalizedVolume);
-            UpdatePlanetSize(targetScale);
-        }
+        Vector3 targetScale = new Vector3(
+            config.normalizedVolume,
+            config.normalizedVolume,
+            config.normalizedVolume
+        );
+        UpdatePlanetSize(targetScale);
     }
 
     public void UpdateSprite(Sprite newSprite) {
@@ -75,66 +85,102 @@ public class StarView : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
     public void UpdatePlanetSize(Vector3 newScale) {
         if (_visualRoot == null) return;
-
-        bool wasBreathing = _breathingTween != null && _breathingTween.IsPlaying();
-
-        if (wasBreathing) {
-            ToggleAvailableAnimation(false);
-        }
-
         _baseScale = newScale;
         _visualRoot.localScale = _baseScale;
+    }
 
-        if (wasBreathing) {
-            ToggleAvailableAnimation(true);
+    public void AddConnectionLine(LayerCoord to, LineRenderer line) {
+        _connectionLines[to] = line;
+        line.material.color = GetLineColor();
+    }
+
+    public void UpdateConnectionLinesColor(Color color) {
+        if (_connectionLines == null) return;
+
+        foreach (var line in _connectionLines.Values) {
+            if (line != null && line.material != null) {
+                line.material.color = color;
+            }
         }
     }
 
-    private void HandleStateChanged(StarState state) {
-        UpdateColorForState(state);
-        ToggleAvailableAnimation(state == StarState.Available);
+    private void OnAvailabilityChanged(bool isAvailable) {
+        UpdateVisualState();
     }
 
-    private void UpdateColorForState(StarState state) {
-        if (_renderer == null) return;
-
-        _renderer.color = _theme.GetColor(state);
+    private void OnCurrentChanged(bool isCurrent) {
+        UpdateVisualState();
     }
 
-    public void SetSelected(bool selected) {
-        _isSelected = selected;
-        if (_star == null) return; 
-
-        StarState currentState = _star.State.Value;
-        StarState state = _isSelected ? StarState.Selected : currentState;
-
-        UpdateColorForState(state);
+    private void OnSelectionChanged(bool isSelected) {
+        UpdateVisualState();
     }
 
-    private Tween _breathingTween;
+    private void UpdateVisualState() {
+        if (_star == null) return;
 
-    private void ToggleAvailableAnimation(bool isEnabled) {
-        bool wasBreathing = _breathingTween != null && _breathingTween.IsPlaying();
+        Color planetColor = GetPlanetColor();
+        ApplyPlanetColor(planetColor);
+
+        bool shouldBreathe = _star.IsAvailable.Value && !_star.IsCurrent.Value;
+        ToggleBreathingAnimation(shouldBreathe);
+
+        Color lineColor = GetLineColor();
+        UpdateConnectionLinesColor(lineColor);
+    }
+
+    private Color GetPlanetColor() {
+        // Priority: Current > Selected > Available > Locked
+        if (_star.IsCurrent.Value) {
+            return _theme.CurrentColor;
+        }
+
+        if (_star.IsSelected.Value) {
+            return _theme.SelectedColor;
+        }
+
+        if (_star.IsAvailable.Value) {
+            return _theme.AvailableColor;
+        }
+
+        return _theme.LockedColor;
+    }
+
+    private Color GetLineColor() {
+        if (_star.IsVisited.Value && _star.IsCurrent.Value) {
+            return _theme.AvailableLineColor;
+        }
+        return _theme.LockedLineColor;
+    }
+
+    private void ApplyPlanetColor(Color color) {
+        if (_renderer != null) {
+            _renderer.color = color;
+        }
+    }
+
+    private void ToggleBreathingAnimation(bool shouldBreathe) {
+        bool isBreathing = _breathingTween != null && _breathingTween.IsPlaying();
 
         if (_visualRoot == null) return;
 
-        if (!isEnabled && wasBreathing) {
+        if (!shouldBreathe && isBreathing) {
             _breathingTween?.Kill();
             _breathingTween = null;
             _visualRoot.localScale = _baseScale;
-
             return;
         }
 
-        _visualRoot.localScale = _baseScale;
-        Vector3 targetScale = _baseScale * _breathingScaleMultiplier;
+        if (shouldBreathe && !isBreathing) {
+            _visualRoot.localScale = _baseScale;
+            Vector3 targetScale = _baseScale * _breathingScaleMultiplier;
 
-        _breathingTween = _visualRoot.DOScale(targetScale, _breathingDuration)
-            .SetEase(Ease.InOutSine)
-            .SetLoops(-1, LoopType.Yoyo)
-            .OnKill(() => _breathingTween = null);
+            _breathingTween = _visualRoot.DOScale(targetScale, _breathingDuration)
+                .SetEase(Ease.InOutSine)
+                .SetLoops(-1, LoopType.Yoyo)
+                .OnKill(() => _breathingTween = null);
+        }
     }
-
 
     public void OnPointerClick(PointerEventData eventData) {
         if (_star != null) {
@@ -143,34 +189,31 @@ public class StarView : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     }
 
     public void OnPointerEnter(PointerEventData eventData) {
-        if (_visualRoot == null) return;
+        if (_visualRoot == null || _star == null) return;
 
         _breathingTween?.Pause();
+        _hoverTween?.Kill();
 
         Vector3 targetScale = _baseScale * _hoverScaleMultiplier;
-        _visualRoot.DOScale(targetScale, _hoverTransitionDuration)
+        _hoverTween = _visualRoot.DOScale(targetScale, _hoverTransitionDuration)
             .SetEase(Ease.OutBack);
     }
 
     public void OnPointerExit(PointerEventData eventData) {
-        if (_visualRoot == null) return;
-
-        _visualRoot.DOScale(_baseScale, _hoverTransitionDuration)
+        _hoverTween?.Kill();
+        _hoverTween = _visualRoot.DOScale(_baseScale, _hoverTransitionDuration)
             .SetEase(Ease.OutBack)
             .OnComplete(() => {
-                _breathingTween?.Play();
+                if (_star.IsAvailable.Value && !_star.IsCurrent.Value) {
+                    ToggleBreathingAnimation(true);
+                }
             });
     }
 
     private void OnDestroy() {
-        if (_star != null) {
-            _star.State.OnChanged -= HandleStateChanged;
-        }
-
+        UnsubscribeFromStarEvents();
         _breathingTween?.Kill();
-
-        if (_visualRoot != null) {
-            _visualRoot.DOKill();
-        }
+        _visualRoot?.DOKill();
+        _connectionLines.Clear();
     }
 }
