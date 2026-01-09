@@ -76,14 +76,18 @@ public class obstaclePlacer : MonoBehaviour
     }
 
 
-    public void MakeObstacles(string terrainOption,int obstacleDensity, int _borderSizeX, int _borderSizeY){
+    public void MakeObstacles(string terrainOption,int obstacleDensity,int _borderSizeXlw, int _borderSizeYlw,int _borderSizeXhi, int _borderSizeYhi){
         BoundsInt bounds = _tilemap.cellBounds;
         int width = bounds.size.x;
         int height = bounds.size.y;
-        int lowX = bounds.xMin+_borderSizeX;
-        int lowY = bounds.yMin+_borderSizeY;
-        int hiX = bounds.xMax-_borderSizeX;
-        int hiY = bounds.yMax-_borderSizeY;
+        // int lowX = bounds.xMin+_borderSizeXlw;
+        // int lowY = bounds.yMin+_borderSizeYlw;
+        // int hiX = bounds.xMax-_borderSizeXhi;
+        // int hiY = bounds.yMax-_borderSizeYhi;
+        int lowX = bounds.xMin;
+        int lowY = bounds.yMin;
+        int hiX = bounds.xMax;
+        int hiY = bounds.yMax;
 
         for(int j=lowY; j<hiY+1;j=j+2){
             for(int i=lowX; i<hiX+1;i++){

@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections.Generic;
 using UnityEngine.Tilemaps;
 using Zenject;
 
@@ -9,10 +8,13 @@ public class TerrainPicker : MonoBehaviour
 {
 
     IStarNavigationService starNavigationService;
+    [SerializeField]
+    BiomeData biomeData;
 
     [Inject]
     void StarNavigationService(IStarNavigationService service) {
-        Debug.Log("LOAD: " + service.CurrentStar);
+        Debug.Log("LOAD: " + service.CurrentStar.PlanetConfig.BiomeLabel);
+        biomeData = service.CurrentStar.PlanetConfig.biomeData;
         starNavigationService = service;
     }
 
@@ -29,10 +31,15 @@ public class TerrainPicker : MonoBehaviour
     private List<GameObject> _enemyListDefault;
 
     [SerializeField]
-    private int _borderSizeX=17;
+    private int _borderSizeXlw=17;
+    [SerializeField]
+    private int _borderSizeXhi=17;
 
     [SerializeField]
-    private int _borderSizeY=7;
+    private int _borderSizeYlw=7;
+
+    [SerializeField]
+    private int _borderSizeYhi=7;
 
     [SerializeField]
     private obstaclePlacer _obstaclePlacer;
@@ -176,9 +183,8 @@ public class TerrainPicker : MonoBehaviour
     public string _terrainLabel = "rock";
 
     void Start(){
-        // setTiles(_terrainLabel);
         if(levelisLoaded==false){
-            setTiles(terrainDefault.enemyList,terrainDefault.terrainType,terrainDefault.spawnRate,terrainDefault.obstacleDensity,terrainDefault.moduleCount,terrainDefault.oilCount);
+            setTiles(new List<GameObject>(biomeData.enemyPrefabs), biomeData.biomeLabel, biomeData.spawnRate, biomeData.obstacleDensity, biomeData.moduleCount, biomeData.oilCount);
         }
     }    
     
@@ -354,25 +360,22 @@ public class TerrainPicker : MonoBehaviour
             }
         }
 
-        if (_modulePlacer != null) {
-            Debug.Log("Making Modules");
-            _modulePlacer.MakeModules(_modulesList, _borderSizeX, _borderSizeY, moduleCount);
-        }
-        
+        Debug.Log("Making Modules");
+        _modulePlacer.MakeModules(_modulesList,_borderSizeXlw,_borderSizeYlw,_borderSizeXhi,_borderSizeYhi, moduleCount);
 
         Debug.Log("Making Platform");
-        _modulePlacer.MakePlatform(_borderSizeX,_borderSizeY);
+        _modulePlacer.MakePlatform(_borderSizeXlw,_borderSizeYlw,_borderSizeXhi,_borderSizeYhi);
 
         Debug.Log("Making Oil");
-        _oilPlacer.MakeOil(_borderSizeX,_borderSizeY,oilCount);
+        _oilPlacer.MakeOil(_borderSizeXlw,_borderSizeYlw,_borderSizeXhi,_borderSizeYhi,oilCount);
 
+        Debug.Log("Making obstacles");
+        // _obstaclePlacer.MakeObstacles(_terrainLabel,_obstacleDensity);//set input to % of tiles having obstacles, 1-20
+        _obstaclePlacer.MakeObstacles(_terrainLabel,obsDensity,_borderSizeXlw,_borderSizeYlw,_borderSizeXhi,_borderSizeYhi);//set input to % of tiles having obstacles, 1-20
         
-        if (_enemyPlacer!= null) {
-            Debug.Log("Making Enemies");
-            // _enemyPlacer.MakeEnemies(_spawnRate,_borderSizeX,_borderSizeY);//set input to spawn rate (avg # of enemies to spawn in a 20x20 grid)
-            _enemyPlacer.MakeEnemies(enemyRate, _borderSizeX, _borderSizeY, enemyList);//set input to spawn rate (avg # of enemies to spawn in a 20x20 grid)
-        }
-        
+        Debug.Log("Making Enemies"); 
+        // _enemyPlacer.MakeEnemies(_spawnRate,_borderSizeX,_borderSizeY);//set input to spawn rate (avg # of enemies to spawn in a 20x20 grid)
+        _enemyPlacer.MakeEnemies(enemyRate,_borderSizeXlw,_borderSizeYlw,_borderSizeXhi,_borderSizeYhi,enemyList);//set input to spawn rate (avg # of enemies to spawn in a 20x20 grid)
 
     }
 
