@@ -1,4 +1,5 @@
 using UnityEngine;
+using Zenject;
 
 public class GameManager2D : MonoBehaviour
 {
@@ -8,13 +9,10 @@ public class GameManager2D : MonoBehaviour
     [SerializeField]
     PlayerState pState;
 
-    [SerializeField]
-    LevelState lState;
-
-    IGameManager gameManager;
-
+    [Inject] private IGameManager gm;
     private void Awake() {
         Application.targetFrameRate = -1;
+        Debug.Log($"Injected gm : {gm}");
     }
 
     void Start()
