@@ -1,4 +1,5 @@
 using UnityEngine;
+using Zenject;
 
 public class GameManager2D : MonoBehaviour
 {
@@ -7,6 +8,13 @@ public class GameManager2D : MonoBehaviour
 
     [SerializeField]
     PlayerState pState;
+
+    GameManager gameManager;
+
+    [Inject]
+    private void GameManager(GameManager gameManager) {
+        this.gameManager = gameManager;
+    }
 
     private void Awake() {
         Application.targetFrameRate = -1;
@@ -25,10 +33,12 @@ public class GameManager2D : MonoBehaviour
     }
 
     public void OnLevelComplete(GameObject player, bool entered) {
-        if (entered) Debug.Log("Pog");
+        if (entered) { 
+            gameManager.ContinueGame();
+        }
     }
 
     public void OnDeath() {
-        Debug.Log("Ded");
+        gameManager.FinishGame();
     }
 }

@@ -33,7 +33,7 @@ public class PlayerInputStrategy : ACharacterStrategy {
     Vector3 moveDirection, lookDirection, lookPoint;
     [SerializeField]
     float firingMoveSpeedMultiplier = 1.0f;
-    public GameObject closestEnemy;
+    public Collider2D closestEnemy;
 
     [Header("State")]
     public bool sprintActive = true, canSprint = true, canAttack = true, canMove = true;
@@ -127,7 +127,7 @@ public class PlayerInputStrategy : ACharacterStrategy {
         float closestDistance = float.MaxValue;
         foreach (Collider2D collider in Physics2D.OverlapCircleAll(transform.position, aimAssistRange, 1 << Layers.Enemy)) {
             if (closestEnemy == null || Vector3.Distance(transform.position, collider.transform.position) < closestDistance) {
-                closestEnemy = collider.gameObject;
+                closestEnemy = collider;
                 closestDistance = Vector3.Distance(transform.position, closestEnemy.transform.position);
             }
         }
