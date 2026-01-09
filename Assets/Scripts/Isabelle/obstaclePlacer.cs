@@ -80,10 +80,14 @@ public class obstaclePlacer : MonoBehaviour
         BoundsInt bounds = _tilemap.cellBounds;
         int width = bounds.size.x;
         int height = bounds.size.y;
-        int lowX = bounds.xMin+_borderSizeXlw;
-        int lowY = bounds.yMin+_borderSizeYlw;
-        int hiX = bounds.xMax-_borderSizeXhi;
-        int hiY = bounds.yMax-_borderSizeYhi;
+        // int lowX = bounds.xMin+_borderSizeXlw;
+        // int lowY = bounds.yMin+_borderSizeYlw;
+        // int hiX = bounds.xMax-_borderSizeXhi;
+        // int hiY = bounds.yMax-_borderSizeYhi;
+        int lowX = bounds.xMin;
+        int lowY = bounds.yMin;
+        int hiX = bounds.xMax;
+        int hiY = bounds.yMax;
 
         for(int j=lowY; j<hiY+1;j=j+2){
             for(int i=lowX; i<hiX+1;i++){
