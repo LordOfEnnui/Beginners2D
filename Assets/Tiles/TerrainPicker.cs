@@ -28,10 +28,15 @@ public class TerrainPicker : MonoBehaviour
     private List<GameObject> _enemyListDefault;
 
     [SerializeField]
-    private int _borderSizeX=17;
+    private int _borderSizeXlw=17;
+    [SerializeField]
+    private int _borderSizeXhi=17;
 
     [SerializeField]
-    private int _borderSizeY=7;
+    private int _borderSizeYlw=7;
+
+    [SerializeField]
+    private int _borderSizeYhi=7;
 
     [SerializeField]
     private obstaclePlacer _obstaclePlacer;
@@ -354,21 +359,21 @@ public class TerrainPicker : MonoBehaviour
         }
 
         Debug.Log("Making Modules");
-        _modulePlacer.MakeModules(_modulesList,_borderSizeX,_borderSizeY,moduleCount);
+        _modulePlacer.MakeModules(_modulesList,_borderSizeXlw,_borderSizeYlw,_borderSizeXhi,_borderSizeYhi, moduleCount);
 
         Debug.Log("Making Platform");
-        _modulePlacer.MakePlatform(_borderSizeX,_borderSizeY);
+        _modulePlacer.MakePlatform(_borderSizeXlw,_borderSizeYlw,_borderSizeXhi,_borderSizeYhi);
 
         Debug.Log("Making Oil");
-        _oilPlacer.MakeOil(_borderSizeX,_borderSizeY,oilCount);
+        _oilPlacer.MakeOil(_borderSizeXlw,_borderSizeYlw,_borderSizeXhi,_borderSizeYhi,oilCount);
 
         Debug.Log("Making obstacles");
         // _obstaclePlacer.MakeObstacles(_terrainLabel,_obstacleDensity);//set input to % of tiles having obstacles, 1-20
-        _obstaclePlacer.MakeObstacles(_terrainLabel,obsDensity,_borderSizeX,_borderSizeY);//set input to % of tiles having obstacles, 1-20
+        _obstaclePlacer.MakeObstacles(_terrainLabel,obsDensity,_borderSizeXlw,_borderSizeYlw,_borderSizeXhi,_borderSizeYhi);//set input to % of tiles having obstacles, 1-20
         
         Debug.Log("Making Enemies"); 
         // _enemyPlacer.MakeEnemies(_spawnRate,_borderSizeX,_borderSizeY);//set input to spawn rate (avg # of enemies to spawn in a 20x20 grid)
-        _enemyPlacer.MakeEnemies(enemyRate,_borderSizeX,_borderSizeY,enemyList);//set input to spawn rate (avg # of enemies to spawn in a 20x20 grid)
+        _enemyPlacer.MakeEnemies(enemyRate,_borderSizeXlw,_borderSizeYlw,_borderSizeXhi,_borderSizeYhi,enemyList);//set input to spawn rate (avg # of enemies to spawn in a 20x20 grid)
 
     }
 
