@@ -562,6 +562,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   lifetime: 2
+  disableColliderAtStart: 0
   health: 1
   damage: 1
   playerBullet: 0
@@ -5518,6 +5519,9 @@ MonoBehaviour:
   turnCharacter: 1
   isAttacking: 0
   followVSRepel: 0.25
+  oilDropProb: 0.4
+  moduleDropProb: 0.15
+  maxOilAmount: 10
   lState: {fileID: 0}
   timeToFire: 0
   dead: 0
@@ -5540,8 +5544,8 @@ MonoBehaviour:
   spriteRenderer: {fileID: 0}
   damageParticles: {fileID: 5438073084226265691}
   strat: {fileID: 0}
-  maxHealth: 5
-  currentHealth: 5
+  maxHealth: 7
+  currentHealth: 7
   lState: {fileID: 0}
   collider2d: {fileID: 1545159358991601613}
 --- !u!1 &8248386208558758395

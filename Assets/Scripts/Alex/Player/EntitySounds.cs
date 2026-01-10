@@ -14,8 +14,10 @@ public class EntitySounds : MonoBehaviour {
     protected virtual void Start() {
         InitializeLoopSounds();
 
+#if UNITY_EDITOR
         if (enableStartTest)
             TestMovementSound();
+#endif
     }
 
     protected virtual void InitializeLoopSounds() {

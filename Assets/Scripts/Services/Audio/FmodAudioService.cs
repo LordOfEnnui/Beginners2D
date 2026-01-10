@@ -1,8 +1,7 @@
-using System;
+using FMOD.Studio;
+using FMODUnity;
 using System.Collections.Generic;
 using UnityEngine;
-using FMODUnity;
-using FMOD.Studio;
 
 public class FmodAudioService : IAudioService {
     private readonly Dictionary<AudioChannelType, string> busNames = new() {
@@ -36,7 +35,7 @@ public class FmodAudioService : IAudioService {
         }
     }
 
-    #region IAudioService Implementation (базовий інтерфейс)
+    #region IAudioService Implementation (базовиЃEіыQерфейс)
 
     public float GetVolume(AudioChannelType channel) {
         if (!buses.TryGetValue(channel, out var bus)) {

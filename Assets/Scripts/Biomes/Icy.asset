@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f7fa0f81a37ae443af37c6a606cb423, type: 3}
   m_Name: Icy
   m_EditorClassIdentifier: Assembly-CSharp::BiomeData
-  biomeLabel: ice
+  biomeLabel: snow
   displayName: Icy
   tiles:
   - {fileID: 11400000, guid: 36cfbb701dd923a439d1d052a0ab5b11, type: 2}

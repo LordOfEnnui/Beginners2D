@@ -133,6 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CrystalEnemyAnimator2D
   animator: {fileID: 1047590187195008745}
   spriteRenderer: {fileID: 0}
+  strat: {fileID: 0}
   verticalFieldDegrees: 90
   facingRight: 1
   lookLeft: 0
@@ -142,8 +143,10 @@ MonoBehaviour:
   moving: 0
   speed: 0
   state: 0
+  afterImage: {fileID: 0}
+  afterImageCreate: 0.01
+  afterImageDuration: 0.4
   eyeAnimator: {fileID: 4244180870677766755}
-  strat: {fileID: 0}
   maxEyeBrightness: 3
   eyeBrightness: 0
   eyeBrightnessCurve:
@@ -439,6 +442,10 @@ MonoBehaviour:
   turnSpeed: 2
   facingType: 90
   canMove: 1
+  canSprint: 0
+  sprintSpeed: 30
+  sprintDuration: 0.2
+  sprintCooldown: 3
   targetVelocity: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
   trueFacingAngle: 0
@@ -455,16 +462,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f08a5f7fd0a240a4da1908fd76752c9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  isSprinting: 0
   target: {fileID: 0}
   facingArrow: {fileID: 0}
+  enemyRange: 20
   facingAngle: 0
   speed: 0
   idealDistanceFromTarget: 0
   turnCharacter: 1
   isAttacking: 0
   followVSRepel: 0.25
+  oilDropProb: 1
+  moduleDropProb: 0.1
+  maxOilAmount: 10
   lState: {fileID: 0}
   timeToFire: 0
+  dead: 0
+  targetDistance: 0
 --- !u!114 &5470535406752023185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -482,8 +496,9 @@ MonoBehaviour:
   rb: {fileID: 0}
   spriteRenderer: {fileID: 0}
   damageParticles: {fileID: 1639517848491143444}
-  maxHealth: 5
-  currentHealth: 5
+  strat: {fileID: 0}
+  maxHealth: 10
+  currentHealth: 10
   lState: {fileID: 0}
   collider2d: {fileID: 3593159889417899718}
 --- !u!1 &6119823495563373226
@@ -872,6 +887,10 @@ PrefabInstance:
     - target: {fileID: 5981662271516950646, guid: 73abd2b71377fe843bdd9ec96733ab85, type: 3}
       propertyPath: targeting
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5981662271516950646, guid: 73abd2b71377fe843bdd9ec96733ab85, type: 3}
+      propertyPath: disableColliderAtStart
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 7084689784278571120, guid: 73abd2b71377fe843bdd9ec96733ab85, type: 3}
       propertyPath: m_LocalScale.x

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed10cdcd2b03ccf4cb08d2144fe10efd, type: 3}
   m_Name: FireCrystalAttack
   m_EditorClassIdentifier: Assembly-CSharp::ShootParams
-  fireRate: 0.3
+  fireRate: 0.5
   bulletSpeed: 15
   fireSpread: 10
   recoilForce: 50

@@ -1,6 +1,5 @@
 using System.Collections;
 using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class SwordScript : MonoBehaviour
@@ -20,7 +19,7 @@ public class SwordScript : MonoBehaviour
     Transform swordTransform;
     Vector3 velocity;
 
-    bool isAttacking = false;
+    public bool isAttacking = false;
     float lastAttackTime = -Mathf.Infinity;
 
     void Start()

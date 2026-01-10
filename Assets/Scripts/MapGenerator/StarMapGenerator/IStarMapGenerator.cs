@@ -1,8 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEngine.Audio;
-using static UnityEngine.Rendering.STP;
 
 public interface IStarMapGenerator {
     StarMap GenerateNewMap(StarMapGenerationConfig _config);
@@ -110,6 +107,8 @@ public class StarGenContext {
         Config = config ?? throw new ArgumentNullException(nameof(config));
         StarMap = starMap ?? throw new ArgumentNullException(nameof(starMap));
 
-        Random = new Random(config.graphConfig.Seed);
+        Random = new Random(config.graphConfig.Seed + DateTime.Now.Millisecond){
+
+        };
     }
 }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
-using UnityEngine;
-using Zenject;
+﻿using System.Collections.Generic;
 
 public interface IStarMapService {
     StarMap StarMap { get; }
