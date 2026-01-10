@@ -149,6 +149,14 @@ public class AudioManager2D : MonoBehaviour {
 
     #endregion
 
+    private async UniTask MoveMusic() {
+        SetMoving(true);
+        while (true) {
+            SetMovementSpeed(Mathf.Min(pState.moveSpeedForAudio / 1.66f, 0.8f));
+            await UniTask.WaitForSeconds(0.1f);
+        }
+    }
+
 
     #region Cleanup
 
@@ -182,14 +190,6 @@ public class AudioManager2D : MonoBehaviour {
         await UniTask.WaitForSeconds(2);
         SetMoving(false);
         SetMovementSpeed(0f);
-    }
-
-    private async UniTask MoveMusic() {
-        SetMoving(true);
-        while (true) {
-            SetMovementSpeed(pState.moveSpeedForAudio / 1.33f);
-            await UniTask.WaitForSeconds(0.1f);
-        }
     }
 
 #endif

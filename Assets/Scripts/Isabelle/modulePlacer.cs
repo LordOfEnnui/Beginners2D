@@ -20,15 +20,6 @@ public class ModulePlacer : MonoBehaviour {
 
     }
 
-    bool CheckSpot() {
-        int moduleChance = Random.Range(1, 1801);
-        if (moduleChance <= 1) {
-            Debug.Log("Placed a module");
-            return true;
-        }
-        return false;
-    }
-
     public void MakePlatform(int _borderSizeXlw, int _borderSizeYlw, int _borderSizeXhi, int _borderSizeYhi) {
 
         BoundsInt bounds = _tilemap.cellBounds;
@@ -59,32 +50,11 @@ public class ModulePlacer : MonoBehaviour {
         int lowY = bounds.yMin + _borderSizeYlw;
         int hiX = bounds.xMax - _borderSizeXhi;
         int hiY = bounds.yMax - _borderSizeYhi;
-        int modulesPlaced = 0;
 
-        while (modulesPlaced < moduleCount - 1) {
-            for (int i = lowX; i < hiX + 1; i++) {
-                for (int j = lowY; j < hiY + 1; j++) {
-                    bool hasModule = CheckSpot();
-                    if (hasModule) {
-                        //Create prefab
-                        GameObject moduleInstance = Instantiate(_module);
 
-                        //Set prefab location
-                        moduleInstance.transform.position = new Vector3(i, j, 0);
-                        Debug.Log("Modules placed was " + modulesPlaced);
-                        modulesPlaced = modulesPlaced + 1;
-                        Debug.Log("now " + modulesPlaced);
-                        if (modulesPlaced == moduleCount) {
-                            return;
-                        }
-                    }
-                }
-            }
+        for (int i = 0; i < moduleCount; i++) {
+            GameObject module = Instantiate(_module);
+            module.transform.position = new Vector3(Random.Range(lowX, hiX), Random.Range(lowY, hiY));
         }
-    }
-
-    // Update is called once per frame
-    void Update() {
-
     }
 }

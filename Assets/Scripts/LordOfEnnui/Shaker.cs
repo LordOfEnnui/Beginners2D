@@ -21,7 +21,7 @@ public class Shaker : MonoBehaviour {
 
     private Vector3 initialPosition, initialEulerAngles;
 
-    private void Awake() {
+    private void Start() {
         initialPosition = transform.localPosition;
         initialEulerAngles = transform.localEulerAngles;
         targetPos = transform.localPosition;
@@ -29,7 +29,7 @@ public class Shaker : MonoBehaviour {
     }
 
     private void OnValidate() {
-        Awake();
+        Start();
     }
 
     private void Update() {

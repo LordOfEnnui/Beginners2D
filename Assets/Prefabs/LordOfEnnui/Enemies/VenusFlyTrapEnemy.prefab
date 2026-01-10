@@ -371,7 +371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 288ce6e439285374ba39eac0812909a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  maxSpeed: 30
+  maxSpeed: 40
   maxAcceleration: 20
   turnSpeed: 5
   facingType: 1
@@ -406,8 +406,8 @@ MonoBehaviour:
   turnCharacter: 1
   isAttacking: 0
   followVSRepel: 0.75
-  oilDropProb: 0.5
-  moduleDropProb: 0.1
+  oilDropProb: 0.4
+  moduleDropProb: 0.15
   maxOilAmount: 10
   lState: {fileID: 0}
   timeToFire: 0

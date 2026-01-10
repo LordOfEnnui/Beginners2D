@@ -1,8 +1,4 @@
 ﻿using System;
-using UnityEngine.UI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 public interface IStarNavigationService {
     Star CurrentStar { get; }

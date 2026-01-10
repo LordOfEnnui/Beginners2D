@@ -42,7 +42,18 @@ public class PlayerController2D : MonoBehaviour {
         if (sprintResetTimer > sprintResetCooldown) {
             sprintPhase = 0;
             sprintResetTimer = 0;
-        } 
+        }
+        
+        if (sprintInput && moveStrat.canSprint && moveStrat.canMove) {
+            pState.onDash.Invoke();
+            sprintPhase++;
+            sprintResetTimer = 0;
+            timeSinceLastSprint = 0;
+            moveStrat.isSprinting = true;
+            sprintDirection = targetVelocity.normalized;
+        }
+
+        moveStrat.sprintActive = (sprintPhase < maxConsecutiveSprints || maxConsecutiveSprints < 0) && (timeSinceLastSprint > sprintCooldown || sprintCooldown < 0) && (!moveStrat.isSprinting || timeSinceLastSprint > sprintDuration);
     }
 
     private void FixedUpdate() {
@@ -53,15 +64,6 @@ public class PlayerController2D : MonoBehaviour {
         velocity = body.linearVelocity;         
         Vector3 prevVelocity = velocity;
         float acceleration = maxAcceleration * pState.netMod.accelerationMultiplier;
-
-        if (sprintInput && moveStrat.sprintActive && moveStrat.canSprint && moveStrat.canMove) {
-            pState.onDash.Invoke();
-            sprintPhase++;
-            sprintResetTimer = 0;
-            timeSinceLastSprint = 0;
-            moveStrat.isSprinting = true;
-            sprintDirection = targetVelocity.normalized;
-        }
 
         if (moveStrat.isSprinting && timeSinceLastSprint > sprintDuration * pState.netMod.dashDurationMultipler) {
             moveStrat.isSprinting = false;
@@ -89,6 +91,5 @@ public class PlayerController2D : MonoBehaviour {
 
         body.linearVelocity = moveStrat.canMove ? velocity : Vector3.zero;
         pState.moveSpeedForAudio = targetVelocity.magnitude / maxSpeed;
-        moveStrat.sprintActive = (sprintPhase < maxConsecutiveSprints || maxConsecutiveSprints < 0) && (timeSinceLastSprint > sprintCooldown || sprintCooldown < 0) && !moveStrat.isSprinting;
     }
 }

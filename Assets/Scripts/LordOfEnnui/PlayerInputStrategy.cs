@@ -105,6 +105,7 @@ public class PlayerInputStrategy : ACharacterStrategy {
             if (inputQueueTimer > inputQueueTime) {
                 sprintInputQueued = false;
                 inputQueued = false;
+                inputQueueTimer = 0f;
             }
         }
 

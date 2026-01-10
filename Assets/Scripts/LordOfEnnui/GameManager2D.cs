@@ -11,11 +11,10 @@ public class GameManager2D : MonoBehaviour {
     LevelState lState;
 
     [Inject] private IGameManager gameManager;
-    private void Awake() {
-        Application.targetFrameRate = -1;
-    }
 
     void Start() {
+        Application.targetFrameRate = 60;
+
         if (levelExitTrigger != null) levelExitTrigger.triggerEvent.AddListener(OnLevelCompleteZoneEnter);
         gameManager = LDirectory2D.Instance.gameManager;
         pState = LDirectory2D.Instance.pState;
